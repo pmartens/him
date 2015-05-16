@@ -1,0 +1,37 @@
+<table id="network_interface_cards">
+  <tr>
+    <td>
+      <p id="notice"><%= notice %></p>
+      <p>
+        <strong>Brand:</strong>
+        <%= @network_interface_card.brand %>
+      </p>
+      <p>
+        <strong>Type:</strong>
+        <%= @network_interface_card.device_type %>
+      </p>
+      <p>
+        <strong>Chipset:</strong>
+        <%= @network_interface_card.chipset %>
+      </p>
+      <p>
+        <strong>TransferRate:</strong>
+        <%= @network_interface_card.transfer_rate %>
+      </p>
+      <p>
+        <strong>Interface:</strong>
+        <%= @network_interface_card.interface %>
+      </p>
+      <p>
+        <strong>Created at:</strong>
+        <%= @network_interface_card.created_at.strftime("%Y-%m-%d %H:%M") %>
+      </p>
+      <p>
+        <strong>Updated at:</strong>
+        <%= @network_interface_card.updated_at.strftime("%Y-%m-%d %H:%M") %>
+      </p>
+      <%= link_to 'Edit', edit_device_network_interface_card_path(@device, @network_interface_card) %> |
+      <%= link_to 'Back', device_network_interface_cards_path(@device) %>
+    </td>
+  </tr>
+</table>

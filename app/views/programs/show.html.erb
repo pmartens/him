@@ -1,0 +1,41 @@
+<table id="programs">
+  <tr>
+    <td>
+      <p id="notice"><%= notice %></p>
+      <p>
+        <strong>Title:</strong>
+        <%= @program.title %>
+      </p>
+      <p>
+        <strong>Version:</strong>
+        <%= @program.version %>
+      </p>
+      <p>
+        <strong>Operating System:</strong>
+        <%= @program.os ? "yes" : "no" %>
+      </p>
+      <p>
+        <strong>Purchased at:</strong>
+        <%= @program.purchased_at %>
+      </p>
+      <p>
+        <strong>License:</strong>
+        <%= @program.license %>
+      </p>
+      <p>
+        <strong>Properties:</strong>
+        <%= @program.properties %>
+      </p>
+      <p>
+        <strong>Created at:</strong>
+        <%= @program.created_at %>
+      </p>
+      <p>
+        <strong>Updated at:</strong>
+        <%= @program.updated_at %>
+      </p>
+      <%= link_to 'Edit', edit_program_path(@program) %> |
+      <%= link_to 'Back', programs_path %>
+    </td>
+  </tr>
+</table>

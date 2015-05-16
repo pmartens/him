@@ -1,0 +1,40 @@
+<table id="network_interface_cards">
+  <tr>
+    <td>
+      <h1>Listing Network interface card</h1>
+      <table id="datatable">
+        <thead>
+        <tr>
+          <th>Brand</th>
+          <th>Type</th>
+          <th>Chipset</th>
+          <th>TransferRate</th>
+          <th>Interface</th>
+          <th>Created at</th>
+          <th>Update at</th>
+          <th colspan="4"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @network_interface_cards.each do |network_interface_card| %>
+            <tr>
+              <td><%= network_interface_card.brand %></td>
+              <td><%= network_interface_card.device_type %></td>
+              <td><%= network_interface_card.chipset %></td>
+              <td><%= network_interface_card.transfer_rate %></td>
+              <td><%= network_interface_card.interface %></td>
+              <td><%= network_interface_card.created_at.strftime("%Y-%m-%d %H:%M") %></td>
+              <td><%= network_interface_card.updated_at.strftime("%Y-%m-%d %H:%M") %></td>
+              <td><%= link_to 'interfaces', device_network_interface_card_network_interfaces_path(@device, network_interface_card)   %></td>
+              <td><%= link_to 'Show', device_network_interface_card_path(@device, network_interface_card) %></td>
+              <td><%= link_to 'Edit', edit_device_network_interface_card_path(@device, network_interface_card) %></td>
+              <td><%= link_to 'Destroy', device_network_interface_card_path(@device, network_interface_card), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
+      <br>
+      <%= link_to 'New Network interface card', new_device_network_interface_card_path(params[:device_id]) %>
+    </td>
+  </tr>
+</table>

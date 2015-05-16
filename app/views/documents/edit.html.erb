@@ -1,0 +1,10 @@
+<table id="documents">
+  <tr>
+    <td>
+      <h1>Editing Document</h1>
+      <%= render 'form' %>
+      <%= link_to 'Show', device_document_path(@device, @document) %> |
+      <%= link_to 'Back', device_documents_path(@device) %>
+    </td>
+  </tr>
+</table>

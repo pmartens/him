@@ -1,0 +1,10 @@
+<table id="network_interfaces">
+  <tr>
+    <td>
+      <h1>Editing Network interface</h1>
+      <%= render 'form' %>
+      <%= link_to 'Show', device_network_interface_card_network_interface_path(@device, @network_interface_card, @network_interface) %> |
+      <%= link_to 'Back', device_network_interface_card_network_interfaces_path(@device, @network_interface_card) %>
+    </td>
+  </tr>
+</table>

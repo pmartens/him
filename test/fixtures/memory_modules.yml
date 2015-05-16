@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  Brand: MyString
+  Model: MyString
+  Type: MyString
+  Capacity: 1
+  Modules: 1
+  Buildform: MyString
+  Type: MyString
+  Speed: MyString
+  Information: MyString
+
+two:
+  Brand: MyString
+  Model: MyString
+  Type: MyString
+  Capacity: 1
+  Modules: 1
+  Buildform: MyString
+  Type: MyString
+  Speed: MyString
+  Information: MyString

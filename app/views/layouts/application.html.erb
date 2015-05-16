@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Him</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<table id="general">
+  <tr>
+    <td id="header"><%= render 'layouts/header' %></td>
+  </tr>
+  <tr>
+    <td id="navigation"><%= render 'layouts/navigation' %></td>
+  </tr>
+  <tr>
+    <td id="main">
+      <div class="notice"><%= render 'layouts/notice' %></div>
+      <div class="alerts"><%= render 'layouts/alerts' %></div>
+      <%= yield %>
+    </td>
+  </tr>
+  <!--<tr>-->
+    <!--<td id="footer"><%#= render 'layouts/footer' %></td>-->
+  <!--</tr>-->
+</table>
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  roomnumber: MyString
+  interface: MyString
+  ip: MyString
+  subnet: MyString
+  router: MyString
+  dns: MyString
+  ip6: MyString
+  router6: MyString
+  prefix: MyString
+  domains: MyString
+  mac: MyString
+  speed: MyString
+  duplex: MyString
+  dhcp: false
+  vlan: 1
+  online: false
+
+two:
+  roomnumber: MyString
+  interface: MyString
+  ip: MyString
+  subnet: MyString
+  router: MyString
+  dns: MyString
+  ip6: MyString
+  router6: MyString
+  prefix: MyString
+  domains: MyString
+  mac: MyString
+  speed: MyString
+  duplex: MyString
+  dhcp: false
+  vlan: 1
+  online: false

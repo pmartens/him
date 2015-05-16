@@ -1,0 +1,18 @@
+<% if user_signed_in? %>
+    <div id="left">
+      <%= link_to "Users", root_path %> |
+      <% if can? :manage, Role %>
+        <%= link_to "Roles", roles_path %> |
+      <% end %>
+      <% if can? :manage, Device %>
+        <%= link_to "Devices", devices_path %> |
+      <% end %>
+      <% if can? :manage, Program %>
+          <%= link_to "Programs", programs_path %> |
+      <% end %>
+    </div>
+    <div id="right">
+      <%= link_to current_user.username, edit_user_registration_path %> |
+      <%= link_to "Log out", destroy_user_session_path, :method => :delete %>
+     </div>
+<% end %>

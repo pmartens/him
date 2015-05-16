@@ -1,0 +1,4 @@
+<% programs.each do |program| %>
+    <%= program.full_title if program.os %>
+<% end %>
+<%= 'No OS defined' if programs.empty? %>

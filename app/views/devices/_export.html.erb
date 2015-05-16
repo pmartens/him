@@ -1,0 +1,10 @@
+<%= form_for(@grid) do |f| %>
+    <div class="field">
+      <%= f.label :extension %><br />
+      <%= collection_select :export, :extension, { :pdf => :pdf, :csv => :csv } %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+<% end %>

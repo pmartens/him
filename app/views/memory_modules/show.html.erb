@@ -1,0 +1,49 @@
+<table id="memory_modules">
+  <tr>
+    <td>
+      <p id="notice"><%= notice %></p>
+      <p>
+        <strong>Brand:</strong>
+        <%= @memory_module.brand %>
+      </p>
+      <p>
+        <strong>Model:</strong>
+        <%= @memory_module.model %>
+      </p>
+      <p>
+        <strong>Type:</strong>
+        <%= @memory_module.modeltype %>
+      </p>
+      <p>
+        <strong>Capacity:</strong>
+        <%= @memory_module.capacity %>
+      </p>
+      <p>
+        <strong>Modules:</strong>
+        <%= @memory_module.modules %>
+      </p>
+      <p>
+        <strong>Buildform:</strong>
+        <%= @memory_module.buildform %>
+      </p>
+      <p>
+        <strong>Speed:</strong>
+        <%= @memory_module.speed %>
+      </p>
+      <p>
+        <strong>Information:</strong>
+        <%= @memory_module.information %>
+      </p>
+      <p>
+        <strong>Created at:</strong>
+        <%= @memory_module.created_at.strftime("%Y-%m-%d %H:%M") %>
+      </p>
+      <p>
+        <strong>Updated at:</strong>
+        <%= @memory_module.updated_at.strftime("%Y-%m-%d %H:%M") %>
+      </p>
+      <%= link_to 'Edit', edit_memory_module_path(@memory_module) %> |
+      <%= link_to 'Back', memory_modules_path %>
+    </td>
+  </tr>
+</table>

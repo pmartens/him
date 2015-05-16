@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  brand: MyString
+  device_type: MyString
+  chipset: MyString
+  transfer_rate: MyString
+  interface: MyString
+
+two:
+  brand: MyString
+  device_type: MyString
+  chipset: MyString
+  transfer_rate: MyString
+  interface: MyString

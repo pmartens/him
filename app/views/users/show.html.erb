@@ -1,0 +1,39 @@
+<table id="users">
+  <tr>
+    <td>
+      <p id="notice"><%= notice %></p>
+      <p>
+        <strong>Email:</strong>
+        <%= @user.email %>
+      </p>
+
+      <p>
+        <strong>Username:</strong>
+        <%= @user.username %>
+      </p>
+
+      <p>
+        <strong>Firstname:</strong>
+        <%= @user.firstname %>
+      </p>
+
+      <p>
+        <strong>Lastname:</strong>
+        <%= @user.lastname %>
+      </p>
+
+      <p>
+        <strong>Created at:</strong>
+        <%= @user.created_at %>
+      </p>
+
+      <p>
+        <strong>Updated at:</strong>
+        <%= @user.updated_at %>
+      </p>
+
+      <%= link_to 'Edit', edit_user_path(@user) %> |
+      <%= link_to 'Back', users_path %>
+    </td>
+  </tr>
+</table>

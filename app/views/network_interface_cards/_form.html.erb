@@ -1,0 +1,40 @@
+<%= form_for([@device, @network_interface_card]) do |f| %>
+    <% if @network_interface_card.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@network_interface_card.errors.count, "error") %> prohibited this device from being saved:</h2>
+
+          <ul>
+            <% @network_interface_card.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :brand %><br>
+      <%= f.text_field :brand %>
+    </div>
+    <div class="field">
+      <%= f.label :device_type %><br>
+      <%#= f.text_field :device_type %>
+      <%= f.select :device_type, ["Cable", "WiFi"], {include_blank: true} %>
+    </div>
+    <div class="field">
+      <%= f.label :chipset %><br>
+      <%= f.text_field :chipset %>
+    </div>
+    <div class="field">
+      <%= f.label :transfer_rate %><br>
+      <%= f.text_field :transfer_rate %>
+    </div>
+    <div class="field">
+      <%= f.label :interface %><br>
+      <%= f.text_field :interface %>
+    </div>
+    <%= f.hidden_field :device_id %>
+
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+<% end %>

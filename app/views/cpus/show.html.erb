@@ -1,0 +1,45 @@
+<table id="cpus">
+  <tr>
+    <td>
+      <p id="notice"><%= notice %></p>
+      <p>
+        <strong>Brand:</strong>
+        <%= @cpu.brand %>
+      </p>
+      <p>
+        <strong>ProcessorNumber:</strong>
+        <%= @cpu.processor_number %>
+      </p>
+      <p>
+        <strong>InstructionSet:</strong>
+        <%= @cpu.instruction_set %>
+      </p>
+      <p>
+        <strong>Cores:</strong>
+        <%= @cpu.cores %>
+      </p>
+      <p>
+        <strong>Threads:</strong>
+        <%= @cpu.threads %>
+      </p>
+      <p>
+        <strong>Frequency:</strong>
+        <%= @cpu.frequency %> Ghz
+      </p>
+      <p>
+        <strong>SocketType:</strong>
+        <%= @cpu.socket_type %>
+      </p>
+      <p>
+        <strong>Created at:</strong>
+        <%= @cpu.created_at.strftime("%Y-%m-%d %H:%M") %>
+      </p>
+      <p>
+        <strong>Updated at:</strong>
+        <%= @cpu.updated_at.strftime("%Y-%m-%d %H:%M") %>
+      </p>
+      <%= link_to 'Edit', edit_cpu_path(@cpu) %> |
+      <%= link_to 'Back', cpus_path %>
+    </td>
+  </tr>
+</table>

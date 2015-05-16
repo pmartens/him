@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  brand: MyString
+  processor_number: MyString
+  instruction_set: MyString
+  cores: 1
+  threads: 1
+  frequency: 1.5
+  socket_type: MyString
+
+two:
+  brand: MyString
+  processor_number: MyString
+  instruction_set: MyString
+  cores: 1
+  threads: 1
+  frequency: 1.5
+  socket_type: MyString

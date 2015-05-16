@@ -1,0 +1,4 @@
+<% programs.each do |program| %>
+    <%= program.full_title %><br>
+<% end %>
+<%= 'No programs defined' if programs.empty? %>

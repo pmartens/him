@@ -1,0 +1,7 @@
+<div id="specialfields">
+<% network_interface_cards.each do |nic| %>
+    <% nic.network_interfaces.each do |interface| %>
+        <%= interface.mac %><br>
+    <% end %>
+<% end %>
+</div>

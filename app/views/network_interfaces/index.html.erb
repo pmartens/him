@@ -1,0 +1,61 @@
+<table id="network_interfaces">
+  <tr>
+    <td>
+      <h1>Listing Network interface</h1>
+      <table id="datatable">
+        <thead>
+        <tr>
+          <th>RoomNumber</th>
+          <th>Interface</th>
+          <th>IP4-adres</th>
+          <th>Subnetmasker</th>
+          <th>Router</th>
+          <th>DNS Servers</th>
+          <th>IP6-Adres</th>
+          <th>IP6 Router</th>
+          <th>Prefix</th>
+          <th>Domains</th>
+          <th>MAC-Adres</th>
+          <th>Speed</th>
+          <th>Duplex</th>
+          <th>DHCP</th>
+          <th>vLAN</th>
+          <th>Online</th>
+          <th>Created at</th>
+          <th>Update at</th>
+          <th colspan="3"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @network_interfaces.each do |network_interface| %>
+            <tr>
+              <td><%= network_interface.roomnumber %></td>
+              <td><%= network_interface.interface %></td>
+              <td><%= network_interface.ip %></td>
+              <td><%= network_interface.subnet %></td>
+              <td><%= network_interface.router %></td>
+              <td><%= network_interface.dns %></td>
+              <td><%= network_interface.ip6 %></td>
+              <td><%= network_interface.router6 %></td>
+              <td><%= network_interface.prefix %></td>
+              <td><%= network_interface.domains %></td>
+              <td><%= network_interface.mac %></td>
+              <td><%= network_interface.speed %></td>
+              <td><%= network_interface.duplex %></td>
+              <td><%= network_interface.dhcp %></td>
+              <td><%= network_interface.vlan %></td>
+              <td><%= network_interface.online %></td>
+              <td><%= network_interface.created_at.strftime("%Y-%m-%d %H:%M") %></td>
+              <td><%= network_interface.updated_at.strftime("%Y-%m-%d %H:%M") %></td>
+              <td><%= link_to 'Show', device_network_interface_card_network_interface_path(@device, @network_interface_card, network_interface) %></td>
+              <td><%= link_to 'Edit', edit_device_network_interface_card_network_interface_path(@device, @network_interface_card, network_interface) %></td>
+              <td><%= link_to 'Destroy', device_network_interface_card_network_interface_path(@device, @network_interface_card, network_interface, method: :delete, data: { confirm: 'Are you sure?' }) %></td>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
+      <br>
+      <%= link_to 'New Network interface', new_device_network_interface_card_network_interface_path(@device, @network_interface_card)  %>
+    </td>
+  </tr>
+</table>

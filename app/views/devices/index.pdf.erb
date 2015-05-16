@@ -1,0 +1,25 @@
+<div id="devices">
+  <h1>Devices</h1>
+
+  <table id="datatable" class="table table-striped">
+    <thead>
+        <tr>
+            <% @grid.header.each do |header| %>
+                <th><%= header %></th>
+            <% end %>
+        </tr>
+    </thead>
+    <tbody>
+        <% @grid.rows.each do |row| %>
+            <tr>
+                <% row.each do |attribute| %>
+                    <td><%= attribute %></td>
+                 <% end %>
+            </tr>
+        <% end %>
+    </tbody>
+  </table>
+  <br>
+  Total: <%= @grid.assets.count %>
+
+</div>

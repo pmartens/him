@@ -1,0 +1,68 @@
+
+<%= form_for(@device) do |f| %>
+  <% if @device.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@device.errors.count, "error") %> prohibited this device from being saved:</h2>
+
+      <ul>
+      <% @device.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %>: <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :manufacturer_id %>: <%= collection_select :device, :manufacturer_id, Manufacturer.all, :id, :title, {include_blank: true} %>
+  </div>
+  <div class="field">
+    <%= f.label :device_type_id %>: <%= collection_select :device, :device_type_id, DeviceType.all, :id, :title, {include_blank: true} %>
+  </div>
+  <div class="field">
+    <%= f.label :model_name %>: <%= f.text_field :model_name %>
+  </div>
+  <div class="field">
+    <%= f.label :serialnumber %>: <%= f.text_field :serialnumber %>
+  </div>
+  <div class="field">
+    <%= f.label :servicetag %>: <%= f.text_field :servicetag %>
+  </div>
+  <div class="field">
+    <%= f.label :purchased_at %>: <%= f.date_field :purchased_at %>
+  </div>
+  <div class="field">
+    <%= f.label :color %>: <%= f.color_field :color %>
+  </div>
+  <div class="field">
+    <%= f.label :number_of_cpu %>: <%= f.number_field :number_of_cpu %>
+  </div>
+  <div class="field">
+    <%= f.label :cpu_id %>: <%= collection_select :device, :cpu_id, Cpu.all, :id, :title, {include_blank: true} %>
+  </div>
+  <div class="field">
+    <%= f.label :number_of_mem %>: <%= f.number_field :number_of_mem %>
+  </div>
+  <div class="field">
+    <%= f.label :memory_module_id %>: <%= collection_select :device, :memory_module_id, MemoryModule.all, :id, :title, {include_blank: true} %>
+  </div>
+  <div class="field">
+    <%= f.label :features %>: <%= f.text_field :features %>
+  </div>
+  <div class="field">
+    <%= f.label :information %>: <%= f.text_field :information %>
+  </div>
+  <div class="field">
+    <%= f.label :program_ids %>:<br/> <%= collection_select :device, :program_ids, Program.all, :id, :full_title, {}, {:selected => @device.programs.map(&:id), :multiple => true} %>
+  </div>
+  <div class="field">
+    <%= f.label :user_id %>: <%= collection_select :device, :user_id, User.all, :id, :full_name, {include_blank: true} %>
+  </div>
+
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

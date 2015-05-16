@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="Rails him: development" uuid="92dc0fa1-f871-4568-965f-5e23459ad18c">
+      <first-sync>true</first-sync>
+      <user-name>root</user-name>
+    </data-source>
+    <data-source name="Rails him: test" uuid="39f99a24-afcc-4adb-9f1a-66d0031e1329">
+      <first-sync>true</first-sync>
+      <user-name>root</user-name>
+    </data-source>
+    <data-source name="Rails him: production" uuid="9756de30-25b0-4fb3-8ef6-78cf9923ad79">
+      <first-sync>true</first-sync>
+      <user-name>root</user-name>
+    </data-source>
+  </component>
+</project>

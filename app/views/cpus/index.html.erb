@@ -1,0 +1,43 @@
+<table id="cpus">
+  <tr>
+    <td>
+      <h1>Listing CPU's</h1>
+      <table id="datatable">
+        <thead>
+        <tr>
+          <th>Brand</th>
+          <th>Processor Number</th>
+          <th>Instruction Set</th>
+          <th>Cores</th>
+          <th>Threads</th>
+          <th>Frequency</th>
+          <th>Socket Type</th>
+          <th>Created at</th>
+          <th>Update at</th>
+          <th colspan="3"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @cpus.each do |cpu| %>
+            <tr>
+              <td><%= cpu.brand %></td>
+              <td><%= cpu.processor_number %></td>
+              <td><%= cpu.instruction_set %></td>
+              <td><%= cpu.cores %></td>
+              <td><%= cpu.threads %></td>
+              <td><%= cpu.frequency %></td>
+              <td><%= cpu.socket_type %></td>
+              <td><%= cpu.created_at.strftime("%Y-%m-%d %H:%M") %></td>
+              <td><%= cpu.updated_at.strftime("%Y-%m-%d %H:%M") %></td>
+              <td><%= link_to 'Show', cpu %></td>
+              <td><%= link_to 'Edit', edit_cpu_path(cpu) %></td>
+              <td><%= link_to 'Destroy', cpu, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
+      <br>
+      <%= link_to 'New CPU', new_cpu_path %>
+    </td>
+  </tr>
+</table>

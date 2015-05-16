@@ -1,0 +1,81 @@
+<table id="network_interfaces">
+  <tr>
+    <td>
+      <p id="notice"><%= notice %></p>
+      <p>
+        <strong>RoomNumber:</strong>
+        <%= @network_interface.roomnumber %>
+      </p>
+      <p>
+        <strong>Interface:</strong>
+        <%= @network_interface.interface %>
+      </p>
+      <p>
+        <strong>IP4-Adres:</strong>
+        <%= @network_interface.ip %>
+      </p>
+      <p>
+        <strong>Subnetmasker:</strong>
+        <%= @network_interface.subnet %>
+      </p>
+      <p>
+        <strong>Router:</strong>
+        <%= @network_interface.router %>
+      </p>
+      <p>
+        <strong>DNS Servers:</strong>
+        <%= @network_interface.dns %>
+      </p>
+      <p>
+        <strong>IP6-Adres:</strong>
+        <%= @network_interface.ip6 %>
+      </p>
+      <p>
+        <strong>IP6 Router:</strong>
+        <%= @network_interface.router6 %>
+      </p>
+      <p>
+        <strong>Prefix:</strong>
+        <%= @network_interface.prefix %>
+      </p>
+      <p>
+        <strong>Domains:</strong>
+        <%= @network_interface.domains %>
+      </p>
+      <p>
+        <strong>MAC-Adres:</strong>
+        <%= @network_interface.mac %>
+      </p>
+      <p>
+        <strong>Speed</strong>:</strong>
+        <%= @network_interface.speed %>
+      </p>
+      <p>
+        <strong>Duplex:</strong>
+        <%= @network_interface.duplex %>
+      </p>
+      <p>
+        <strong>DHCP:</strong>
+        <%= @network_interface.dhcp %>
+      </p>
+      <p>
+        <strong>vLAN:</strong>
+        <%= @network_interface.vlan %>
+      </p>
+      <p>
+        <strong>Online:</strong>
+        <%= @network_interface.online %>
+      </p>
+      <p>
+        <strong>Created at:</strong>
+        <%= @network_interface.created_at.strftime("%Y-%m-%d %H:%M") %>
+      </p>
+      <p>
+        <strong>Updated at:</strong>
+        <%= @network_interface.updated_at.strftime("%Y-%m-%d %H:%M") %>
+      </p>
+      <%= link_to 'Edit', edit_device_network_interface_card_network_interface_path(@device, @network_interface_card, @network_interface) %> |
+      <%= link_to 'Back', device_network_interface_card_network_interfaces_path %>
+    </td>
+  </tr>
+</table>
