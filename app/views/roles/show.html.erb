@@ -1,24 +1,19 @@
-<table id="roles">
-  <tr>
-    <td>
-      <p id="notice"><%= notice %></p>
-      <p>
-        <strong>Name:</strong>
-        <%= @role.name %>
-      </p>
+<%- model_class = Role -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %> <%= @role.name %></h1>
+</div>
 
-      <p>
-        <strong>Created at:</strong>
-        <%= @role.created_at %>
-      </p>
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
+  <dd><%= @role.name %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:created_at) %>:</strong></dt>
+  <dd><%= @role.created_at.strftime("%Y-%m-%d %H:%M") %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:updated_at) %>:</strong></dt>
+  <dd><%= @role.updated_at.strftime("%Y-%m-%d %H:%M") %></dd>
+</dl>
 
-      <p>
-        <strong>Updated at:</strong>
-        <%= @role.updated_at %>
-      </p>
-
-      <%= link_to 'Edit', edit_role_path(@role) %> |
-      <%= link_to 'Back', roles_path %>
-    </td>
-  </tr>
-</table>
+<%= link_to t('.back', :default => t("helpers.links.back")), roles_path, :class => 'btn btn-default'  %>
+<%= link_to t('.edit', :default => t("helpers.links.edit")), edit_role_path(@role), :class => 'btn btn-default' %>
+<%= link_to t('.destroy', :default => t("helpers.links.destroy")), role_path(@role), :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>

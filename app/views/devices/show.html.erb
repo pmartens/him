@@ -1,129 +1,54 @@
-<table id="devices">
-  <tr>
-    <td>
-      <p id="notice"><%= notice %></p>
-      <p>
-        <strong>Name:</strong>
-        <%= @device.name %>
-      </p>
-      <p>
-        <strong>Type:</strong>
-        <%= @device.device_type.title %>
-      </p>
-      <p>
-        <strong>ModelName:</strong>
-        <%= render :partial => "devices/manufacturer", :locals => {:model => @device} %>
-        <%= "#{@device.manufacturer.title } #{@device.model_name}" %>
-      </p>
-      <p>
-        <strong>SerialNumber:</strong>
-        <%= @device.serialnumber %>
-      </p>
-      <p>
-        <strong>ServiceTag:</strong>
-        <%= link_to @device.servicetag, @device.servicetag %>
-      </p>
-      <p>
-        <strong>Age:</strong>
-        <%= "#{@device.age} years" %>
-      </p>
-      <p>
-        <strong>Purchased at:</strong>
-        <%= @device.purchased_at %>
-      </p>
-      <p>
-        <strong>Color:</strong>
-        <%=  render :partial => "devices/color", :locals => {:device => @device} %>
-      </p>
-      <p>
-        <strong>CPU:</strong>
-        <%= "#{@device.number_of_cpu} x #{@device.cpu.title unless @device.cpu.nil?}" %>
-      </p>
-      <p>
-        <strong>Memory:</strong>
-        <%= "#{@device.number_of_mem} x #{@device.memory_module.title unless @device.memory_module.nil?}" %>
-      </p>
-      <p>
-        <strong>Operating System:</strong>
-        <% @device.programs.operating_systems.each do |program| %>
-            <%= program.full_title %><br>
-        <% end %>
-      </p>
-      <p>
-        <strong>Programs:</strong>
-        <% @device.programs.no_operating_systems.each do |program| %>
-            <%= program.full_title %><br>
-        <% end %>
-        <%= 'No programs defined' if @device.programs.no_operating_systems.empty? %>
-      </p>
-      <p>
-        <strong>Network Interface Cards:</strong>
-        <% @device.network_interface_cards.each do |nic| %>
-            <br><%= nic.title %>
-            <table id="datatable">
-              <thead>
-              <tr>
-                <th>Interface</th>
-                <th>Roomnumber</th>
-                <th>IP4</th>
-                <th>Router</th>
-                <th>IP6</th>
-                <th>Router6</th>
-                <th>Subnetmasker</th>
-                <th>DNS</th>
-                <th>Prefix</th>
-                <th>Domains</th>
-                <th>MAC-adres</th>
-                <th>Speed</th>
-                <th>Duplex</th>
-                <th>DHCP</th>
-                <th>vLAN</th>
-                <th>Online</th>
-              </tr>
-              </thead>
-              <tbody>
-              <% nic.network_interfaces.each do |ni| %>
-                  <tr>
-                    <td><%= ni.interface %></td>
-                    <td><%= ni.roomnumber %></td>
-                    <td><%= ni.ip %></td>
-                    <td><%= ni.router %></td>
-                    <td><%= ni.ip6 %></td>
-                    <td><%= ni.router6 %></td>
-                    <td><%= ni.subnet %></td>
-                    <td><%= ni.dns %></td>
-                    <td><%= ni.prefix %></td>
-                    <td><%= ni.domains %></td>
-                    <td><%= ni.mac %></td>
-                    <td><%= ni.speed %></td>
-                    <td><%= ni.duplex %></td>
-                    <td><%= check_box_tag 'dhcp', ni.dhcp, ni.dhcp, disabled: true %></td>
-                    <td><%= ni.vlan %></td>
-                    <td><%= check_box_tag 'online', ni.online, ni.online, disabled: true %></td>
-                  </tr>
-              <% end %>
-              </tbody>
-            </table>
-        <% end %>
-      </p>
-      <p>
-        <strong>Features:</strong>
-        <%= @device.features %>
-      </p>
-      <p>
-        <strong>Extra Information:</strong>
-        <%= @device.information %>
-      </p>
-      <p>
-        <strong>Created at:</strong>
-        <%= @device.created_at.strftime("%Y-%m-%d %H:%M") %>
-      </p>
-      <p>
-        <strong>Updated at:</strong>
-        <%= @device.updated_at.strftime("%Y-%m-%d %H:%M") %>
-      </p>
-      <%= link_to 'Edit', edit_device_path(@device) %> |
-      <%= link_to 'Back', devices_path %>
-    </td>
-  </tr>
-</table>
+<%- model_class = Device -%>
+<div class="page-header">
+  <h1><%="#{t '.title', :default => model_class.model_name.human.titleize}: #{@device.name.titleize}" %></h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
+  <dd><%= @device.name %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:type) %>:</strong></dt>
+  <dd><%= @device.device_type.title  %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:model_name) %>:</strong></dt>
+  <dd><%= @device.model_name %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:manufacturer) %>:</strong></dt>
+  <dd><%= render :partial => "devices/manufacturer", :locals => {:model => @device} %><%= @device.manufacturer.title %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:purchased_at) %>:</strong></dt>
+  <dd><%= @device.purchased_at.strftime("%Y-%m-%d %H:%M") %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:age) %>:</strong></dt>
+  <dd><%= @device.age %> years</dd>
+  <dt><strong><%= model_class.human_attribute_name(:serialnumber) %>:</strong></dt>
+  <dd><%= @device.serialnumber %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:servicetag) %>:</strong></dt>
+  <dd><%= link_to @device.servicetag, :target => "_blank" %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:consumer) %>:</strong></dt>
+  <dd><%= @device.user.full_name %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:color) %>:</strong></dt>
+  <dd><%=  render :partial => "devices/color", :locals => {:device => @device} %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:cpu) %>:</strong></dt>
+  <dd><%= "#{@device.number_of_cpu} x #{@device.cpu.title unless @device.cpu.nil?}" %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:memory) %>:</strong></dt>
+  <dd><%= "#{@device.number_of_mem} x #{@device.memory_module.title unless @device.memory_module.nil?}" %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:operating_systems) %>:</strong></dt>
+  <dd>
+  <% @device.programs.operating_systems.each do |program| %>
+      <%= program.full_title %><br>
+  <% end %>
+  </dd>
+  <dt><strong><%= model_class.human_attribute_name(:programs) %>:</strong></dt>
+  <dd>
+  <% @device.programs.no_operating_systems.each do |program| %>
+      <%= program.full_title %><br>
+  <% end %>
+  <%= 'No programs defined' if @device.programs.no_operating_systems.empty? %>
+  </dd>
+  <dt><strong><%= model_class.human_attribute_name(:nics) %>:</strong></dt>
+  <%= render :partial => "devices/network_interface_cards", :locals => {:device => @device} %>
+  <dt><strong><%= model_class.human_attribute_name(:features) %>:</strong></dt>
+  <dd><%= @device.features %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:information) %>:</strong></dt>
+  <dd><%= @device.information %></dd>
+</dl>
+
+<%= link_to t('.back', :default => t("helpers.links.back")), devices_path, :class => 'btn btn-default'  %>
+<%= link_to t('.edit', :default => t("helpers.links.edit")), edit_device_path(@device), :class => 'btn btn-default' %>
+<%= link_to t('.destroy', :default => t("helpers.links.destroy")), device_path(@device), :method => 'delete', :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger' %>

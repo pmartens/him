@@ -1,22 +1,9 @@
-<%= form_for([@device, @document]) do |f| %>
-    <% if @document.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@document.errors.count, "error") %> prohibited this device from being saved:</h2>
+<%= simple_form_for([@device, @document], :html => { :class => 'form-horizontal' }) do |f| %>
 
-          <ul>
-            <% @document.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-            <% end %>
-          </ul>
-        </div>
-    <% end %>
+  <%= f.input :name %>
+  <%= f.input :document, as: :file, html: { class: 'btn-primary'} %>
+  <%= f.input :device_id, as: :hidden %>
 
-    <div class="field">
-      <%= f.label :document %><br>
-      <%= f.file_field :document %>
-    </div>
-    <%= f.hidden_field :device_id %>
-    <div class="actions">
-      <%= f.submit %>
-    </div>
+  <%= f.button :submit, class: 'btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")), device_documents_path(@device), :class => 'btn btn-default' %>
 <% end %>

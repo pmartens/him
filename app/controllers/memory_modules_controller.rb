@@ -1,5 +1,8 @@
 class MemoryModulesController < ApplicationController
 
+  add_breadcrumb :index_devices, :devices_path
+  add_breadcrumb :index, :memory_modules_path
+
   before_action :set_memory_module, only: [:show, :edit, :update, :destroy]
 
   respond_to :html
@@ -41,6 +44,7 @@ class MemoryModulesController < ApplicationController
 
   def set_memory_module
     @memory_module = MemoryModule.find(params[:id])
+    add_breadcrumb :@memory_module.brand
   end
 
   def memory_module_params

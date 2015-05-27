@@ -1,5 +1,8 @@
 class CpusController < ApplicationController
 
+  add_breadcrumb :index_devices, :devices_path
+  add_breadcrumb :index, :cpus_path
+
   before_action :set_cpu, only: [:show, :edit, :update, :destroy]
 
   respond_to :html
@@ -41,6 +44,7 @@ class CpusController < ApplicationController
 
   def set_cpu
     @cpu = Cpu.find(params[:id])
+    add_breadcrumb @cpu.brand
   end
 
   def cpu_params

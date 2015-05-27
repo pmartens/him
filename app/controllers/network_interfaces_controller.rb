@@ -1,5 +1,9 @@
 class NetworkInterfacesController < ApplicationController
 
+  add_breadcrumb :index_devices, :devices_path
+  add_breadcrumb :index, :device_network_interface_cards_path
+  add_breadcrumb :index, :device_network_interface_card_network_interfaces_path
+
   before_action :set_device
   before_action :set_network_interface_card
   before_action :set_network_interface, only: [:show, :edit, :update, :destroy]
@@ -51,6 +55,7 @@ class NetworkInterfacesController < ApplicationController
 
   def set_network_interface
     @network_interface = NetworkInterface.find(params[:id])
+    add_breadcrumb :index, @network_interface.interface
   end
 
   def network_interface_params

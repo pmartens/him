@@ -1,45 +1,31 @@
-<table id="cpus">
-  <tr>
-    <td>
-      <p id="notice"><%= notice %></p>
-      <p>
-        <strong>Brand:</strong>
-        <%= @cpu.brand %>
-      </p>
-      <p>
-        <strong>ProcessorNumber:</strong>
-        <%= @cpu.processor_number %>
-      </p>
-      <p>
-        <strong>InstructionSet:</strong>
-        <%= @cpu.instruction_set %>
-      </p>
-      <p>
-        <strong>Cores:</strong>
-        <%= @cpu.cores %>
-      </p>
-      <p>
-        <strong>Threads:</strong>
-        <%= @cpu.threads %>
-      </p>
-      <p>
-        <strong>Frequency:</strong>
-        <%= @cpu.frequency %> Ghz
-      </p>
-      <p>
-        <strong>SocketType:</strong>
-        <%= @cpu.socket_type %>
-      </p>
-      <p>
-        <strong>Created at:</strong>
-        <%= @cpu.created_at.strftime("%Y-%m-%d %H:%M") %>
-      </p>
-      <p>
-        <strong>Updated at:</strong>
-        <%= @cpu.updated_at.strftime("%Y-%m-%d %H:%M") %>
-      </p>
-      <%= link_to 'Edit', edit_cpu_path(@cpu) %> |
-      <%= link_to 'Back', cpus_path %>
-    </td>
-  </tr>
-</table>
+<%- model_class = Cpu -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:brand) %>:</strong></dt>
+  <dd><%= @cpu.brand %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:processor_number) %>:</strong></dt>
+  <dd><%= @cpu.processor_number %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:instruction_set) %>:</strong></dt>
+  <dd><%= @cpu.instruction_set %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:cores) %>:</strong></dt>
+  <dd><%= @cpu.cores %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:threads) %>:</strong></dt>
+  <dd><%= @cpu.threads %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:frequency) %>:</strong></dt>
+  <dd><%= @cpu.frequency %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:socket_type) %>:</strong></dt>
+  <dd><%= @cpu.socket_type %></dd>
+</dl>
+
+<%= link_to t('.back', :default => t("helpers.links.back")),
+              cpus_path, :class => 'btn btn-default'  %>
+<%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_cpu_path(@cpu), :class => 'btn btn-default' %>
+<%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              cpu_path(@cpu),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>

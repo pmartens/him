@@ -1,14 +1,25 @@
-<div id="devices">
-  <h1>Devices</h1>
-  <%= link_to "Filter", "#", id: "toggle-filters" %> |
-  <%= link_to 'New Device', new_device_path %> |
-  <%= link_to "Cpu's", cpus_path %> |
-  <%= link_to "Memory modules", memory_modules_path %>
-  <br>
-  <div id="filters"><%= datagrid_form_for @grid, :method => :get, :url => devices_path %></div>
-  Total: <%= @grid.assets.total_count %> | <%= link_to "CSV", url_for(format: 'csv')  %> | <%= link_to "PDF", url_for(format: 'pdf')  %>
-
-  <%= datagrid_table(@grid) %>
-  <%= paginate @grid.assets %>
-
+<%- model_class = Device -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
 </div>
+<%= link_to t('.new', :default => t("helpers.links.new")), new_device_path, class: 'btn btn-primary' %>
+<%= link_to "Cpu's", cpus_path, class: 'btn btn-primary' %>
+<%= link_to "Memory modules", memory_modules_path, class: 'btn btn-primary' %>
+<br><br>
+<%= link_to "", "#", id: "toggle-filters", class: 'glyphicon glyphicon-filter' %>
+<%= link_to "", url_for(format: 'csv'), class: 'glyphicon glyphicon-file'  %>
+<%= link_to "", url_for(format: 'pdf'), class: 'glyphicon glyphicon-print' %>
+<br>
+<div id="filters"><%= datagrid_form_for @grid, :method => :get, :url => devices_path %></div>
+
+<%= datagrid_table(@grid) %>
+<%= paginate @grid.assets %>
+Total: <%= @grid.assets.total_count %>
+
+
+
+
+
+
+
+

@@ -1,45 +1,11 @@
-<%= form_for(@cpu) do |f| %>
-    <% if @cpu.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@cpu.errors.count, "error") %> prohibited this device from being saved:</h2>
-
-          <ul>
-            <% @cpu.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-            <% end %>
-          </ul>
-        </div>
-    <% end %>
-
-    <div class="field">
-      <%= f.label :brand %><br>
-      <%= f.text_field :brand %>
-    </div>
-    <div class="field">
-      <%= f.label :processor_number %><br>
-      <%= f.text_field :processor_number %>
-    </div>
-    <div class="field">
-      <%= f.label :instruction_set %><br>
-      <%= f.text_field :instruction_set %>
-    </div>
-    <div class="field">
-      <%= f.label :cores %><br>
-      <%= f.number_field :cores %>
-    </div>
-    <div class="field">
-      <%= f.label :threads %><br />
-      <%= f.number_field :threads %>
-    </div>
-    <div class="field">
-      <%= f.label :frequency %><br>
-      <%= f.text_field :frequency %>  GHz
-    </div>
-    <div class="field">
-      <%= f.label :socket_type %><br>
-      <%= f.text_field :socket_type %>
-    </div>
-    <div class="actions">
-      <%= f.submit %>
-    </div>
+<%= simple_form_for @cpu, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :brand %>
+  <%= f.input :processor_number %>
+  <%= f.input :instruction_set %>
+  <%= f.input :cores %>
+  <%= f.input :threads %>
+  <%= f.input :frequency %>
+  <%= f.input :socket_type %>
+  <%= f.button :submit, :class => 'btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")), cpus_path, :class => 'btn btn-default' %>
 <% end %>

@@ -1,45 +1,50 @@
-<table id="memory_modules">
-  <tr>
-    <td>
-      <h1>Listing Memory modules</h1>
-      <table id="datatable">
-        <thead>
-        <tr>
-          <th>Brand</th>
-          <th>Model</th>
-          <th>Type</th>
-          <th>Capacity</th>
-          <th>Modules</th>
-          <th>Buildform</th>
-          <th>Speed</th>
-          <th>Information</th>
-          <th>Created at</th>
-          <th>Update at</th>
-          <th colspan="3"></th>
-        </tr>
-        </thead>
-        <tbody>
-        <% @memory_modules.each do |memory| %>
-            <tr>
-              <td><%= memory.brand %></td>
-              <td><%= memory.model %></td>
-              <td><%= memory.modeltype %></td>
-              <td><%= memory.capacity %></td>
-              <td><%= memory.modules %></td>
-              <td><%= memory.buildform %></td>
-              <td><%= memory.speed %></td>
-              <td><%= memory.information %></td>
-              <td><%= memory.created_at.strftime("%Y-%m-%d %H:%M") %></td>
-              <td><%= memory.updated_at.strftime("%Y-%m-%d %H:%M") %></td>
-              <td><%= link_to 'Show', memory %></td>
-              <td><%= link_to 'Edit', edit_memory_module_path(memory) %></td>
-              <td><%= link_to 'Destroy', memory, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-            </tr>
-        <% end %>
-        </tbody>
-      </table>
-      <br>
-      <%= link_to 'New Memory module', new_memory_module_path %>
-    </td>
-  </tr>
+<%- model_class = MemoryModule -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:brand) %></th>
+      <th><%= model_class.human_attribute_name(:model) %></th>
+      <th><%= model_class.human_attribute_name(:modeltype) %></th>
+      <th><%= model_class.human_attribute_name(:capacity) %></th>
+      <th><%= model_class.human_attribute_name(:modules) %></th>
+      <th><%= model_class.human_attribute_name(:buildform) %></th>
+      <th><%= model_class.human_attribute_name(:speed) %></th>
+      <th><%= model_class.human_attribute_name(:information) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @memory_modules.each do |memory_module| %>
+      <tr>
+        <td><%= link_to memory_module.id, memory_module_path(memory_module) %></td>
+        <td><%= memory_module.brand %></td>
+        <td><%= memory_module.model %></td>
+        <td><%= memory_module.modeltype %></td>
+        <td><%= memory_module.capacity %></td>
+        <td><%= memory_module.modules %></td>
+        <td><%= memory_module.buildform %></td>
+        <td><%= memory_module.speed %></td>
+        <td><%= memory_module.information %></td>
+        <td><%=l memory_module.created_at %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_memory_module_path(memory_module), :class => 'btn btn-default btn-xs' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      memory_module_path(memory_module),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-xs btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
+
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_memory_module_path,
+            :class => 'btn btn-primary' %>

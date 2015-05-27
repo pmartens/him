@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
 
+  add_breadcrumb :index, :users_path
+
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
 
   def index
@@ -61,6 +63,7 @@ class UsersController < ApplicationController
 
     def set_user
       @user = User.find(params[:id])
+      add_breadcrumb @user.username
     end
 
     def user_params

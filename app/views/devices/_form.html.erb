@@ -1,68 +1,20 @@
-
-<%= form_for(@device) do |f| %>
-  <% if @device.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@device.errors.count, "error") %> prohibited this device from being saved:</h2>
-
-      <ul>
-      <% @device.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :name %>: <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :manufacturer_id %>: <%= collection_select :device, :manufacturer_id, Manufacturer.all, :id, :title, {include_blank: true} %>
-  </div>
-  <div class="field">
-    <%= f.label :device_type_id %>: <%= collection_select :device, :device_type_id, DeviceType.all, :id, :title, {include_blank: true} %>
-  </div>
-  <div class="field">
-    <%= f.label :model_name %>: <%= f.text_field :model_name %>
-  </div>
-  <div class="field">
-    <%= f.label :serialnumber %>: <%= f.text_field :serialnumber %>
-  </div>
-  <div class="field">
-    <%= f.label :servicetag %>: <%= f.text_field :servicetag %>
-  </div>
-  <div class="field">
-    <%= f.label :purchased_at %>: <%= f.date_field :purchased_at %>
-  </div>
-  <div class="field">
-    <%= f.label :color %>: <%= f.color_field :color %>
-  </div>
-  <div class="field">
-    <%= f.label :number_of_cpu %>: <%= f.number_field :number_of_cpu %>
-  </div>
-  <div class="field">
-    <%= f.label :cpu_id %>: <%= collection_select :device, :cpu_id, Cpu.all, :id, :title, {include_blank: true} %>
-  </div>
-  <div class="field">
-    <%= f.label :number_of_mem %>: <%= f.number_field :number_of_mem %>
-  </div>
-  <div class="field">
-    <%= f.label :memory_module_id %>: <%= collection_select :device, :memory_module_id, MemoryModule.all, :id, :title, {include_blank: true} %>
-  </div>
-  <div class="field">
-    <%= f.label :features %>: <%= f.text_field :features %>
-  </div>
-  <div class="field">
-    <%= f.label :information %>: <%= f.text_field :information %>
-  </div>
-  <div class="field">
-    <%= f.label :program_ids %>:<br/> <%= collection_select :device, :program_ids, Program.all, :id, :full_title, {}, {:selected => @device.programs.map(&:id), :multiple => true} %>
-  </div>
-  <div class="field">
-    <%= f.label :user_id %>: <%= collection_select :device, :user_id, User.all, :id, :full_name, {include_blank: true} %>
-  </div>
-
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<%= simple_form_for @device, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :name %>
+  <%= f.association :manufacturer, label_method: :title, value_method: :id %>
+  <%= f.association :device_type, label_method: :title, value_method: :id %>
+  <%= f.input :model_name %>
+  <%= f.input :serialnumber %>
+  <%= f.input :servicetag %>
+  <%= f.input :purchased_at, :as => :date_picker %>
+  <%= f.input :color, :as => :minicolors, input_html: {data: {minicolors: {theme: :bootstrap, position: :left}}}  %>
+  <%= f.input :number_of_cpu, collection: 1..12 %>
+  <%= f.association :cpu, label_method: :title, value_method: :id %>
+  <%= f.input :number_of_mem, collection: 1..12 %>
+  <%= f.association :memory_module, label_method: :title, value_method: :id  %>
+  <%= f.input :features %>
+  <%= f.input :information %>
+  <%= f.association :programs, as: :check_boxes, label_method: :full_title, value_method: :id %>
+  <%= f.association :user, label_method: :full_name, value_method: :id, include_blank: true %>
+  <%= f.button :submit, :class => 'btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")), devices_path, :class => 'btn btn-default' %>
 <% end %>

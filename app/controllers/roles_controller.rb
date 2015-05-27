@@ -1,4 +1,7 @@
 class RolesController < ApplicationController
+
+  add_breadcrumb :index, :roles_path
+
   before_action :set_role, only: [:show, :edit, :update, :destroy]
 
   respond_to :html
@@ -40,6 +43,7 @@ class RolesController < ApplicationController
 
   def set_role
     @role = Role.find(params[:id])
+    add_breadcrumb @role.name
   end
 
   def role_params

@@ -1,82 +1,22 @@
-<%= form_for([@device, @network_interface_card, @network_interface]) do |f| %>
-    <% if @network_interface.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@network_interface.errors.count, "error") %> prohibited this device from being saved:</h2>
+<%= simple_form_for([@device, @network_interface_card, @network_interface], :html => { :class => 'form-horizontal' }) do |f| %>
+  <%= f.input :interface %>
+  <%= f.input :roomnumber %>
+  <%= f.input :ip, placeholder: 'xxx.xxx.xxx.xxx' %>
+  <%= f.input :subnet, placeholder: 'xxx.xxx.xxx.xxx' %>
+  <%= f.input :router, placeholder: 'xxx.xxx.xxx.xxx' %>
+  <%= f.input :dns, placeholder: 'xxx.xxx.xxx.xxx, xxx.xxx.xxx.xxx'%>
+  <%= f.input :ip6, placeholder: 'xxx.xxx.xxx.xxx' %>
+  <%= f.input :router6, placeholder: 'xxx.xxx.xxx.xxx' %>
+  <%= f.input :prefix, collection: 1..32 %>
+  <%= f.input :domains %>
+  <%= f.input :mac, placeholder: 'xx:xx:xx:xx:xx:xx' %>
+  <%= f.input :speed, collection: [10, 100, 1000] %>
+  <%= f.input :duplex, collection: ['Half', 'Full'] %>
+  <%= f.input :dhcp, as: :boolean %>
+  <%= f.input :vlan, collection: 0..4094, default: 0 %>
+  <%= f.input :online, as: :boolean %>
+  <%= f.input :network_interface_card_id, as: :hidden %>
 
-          <ul>
-            <% @network_interface.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-            <% end %>
-          </ul>
-        </div>
-    <% end %>
-
-    <div class="field">
-      <%= f.label :roomnumber %><br>
-      <%= f.text_field :roomnumber %>
-    </div>
-    <div class="field">
-      <%= f.label :interface %><br>
-      <%= f.text_field :interface %>
-    </div>
-    <div class="field">
-      <%= f.label :ip %><br>
-      <%= f.text_field :ip %>
-    </div>
-    <div class="field">
-      <%= f.label :subnet %><br>
-      <%= f.text_field :subnet %>
-    </div>
-    <div class="field">
-      <%= f.label :router %><br>
-      <%= f.text_field :router %>
-    </div>
-    <div class="field">
-      <%= f.label :dns %><br>
-      <%= f.text_field :dns %>
-    </div>
-    <div class="field">
-      <%= f.label :ip6 %><br>
-      <%= f.text_field :ip6 %>
-    </div>
-    <div class="field">
-      <%= f.label :router6 %><br>
-      <%= f.text_field :router6 %>
-    </div>
-    <div class="field">
-      <%= f.label :prefix %><br>
-      <%= f.text_field :prefix %>
-    </div>
-    <div class="field">
-      <%= f.label :domains %><br>
-      <%= f.text_field :domains %>
-    </div>
-    <div class="field">
-      <%= f.label :mac %><br>
-      <%= f.text_field :mac %>
-    </div>
-    <div class="field">
-      <%= f.label :speed %><br>
-      <%= f.text_field :speed %>
-    </div>
-    <div class="field">
-      <%= f.label :duplex %><br>
-      <%= f.text_field :duplex %>
-    </div>
-    <div class="field">
-      <%= f.label :dhcp %><br>
-      <%= f.check_box :dhcp %>
-    </div>
-    <div class="field">
-      <%= f.label :vlan %><br>
-      <%= f.number_field :vlan %>
-    </div>
-    <div class="field">
-      <%= f.label :online %><br>
-      <%= f.check_box :online %>
-    </div>
-    <%= f.hidden_field :network_interface_card_id %>
-    <div class="actions">
-      <%= f.submit %>
-    </div>
+  <%= f.button :submit, :class => 'btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")), device_network_interface_card_network_interfaces_path, :class => 'btn btn-default' %>
 <% end %>

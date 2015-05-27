@@ -1,49 +1,33 @@
-<table id="memory_modules">
-  <tr>
-    <td>
-      <p id="notice"><%= notice %></p>
-      <p>
-        <strong>Brand:</strong>
-        <%= @memory_module.brand %>
-      </p>
-      <p>
-        <strong>Model:</strong>
-        <%= @memory_module.model %>
-      </p>
-      <p>
-        <strong>Type:</strong>
-        <%= @memory_module.modeltype %>
-      </p>
-      <p>
-        <strong>Capacity:</strong>
-        <%= @memory_module.capacity %>
-      </p>
-      <p>
-        <strong>Modules:</strong>
-        <%= @memory_module.modules %>
-      </p>
-      <p>
-        <strong>Buildform:</strong>
-        <%= @memory_module.buildform %>
-      </p>
-      <p>
-        <strong>Speed:</strong>
-        <%= @memory_module.speed %>
-      </p>
-      <p>
-        <strong>Information:</strong>
-        <%= @memory_module.information %>
-      </p>
-      <p>
-        <strong>Created at:</strong>
-        <%= @memory_module.created_at.strftime("%Y-%m-%d %H:%M") %>
-      </p>
-      <p>
-        <strong>Updated at:</strong>
-        <%= @memory_module.updated_at.strftime("%Y-%m-%d %H:%M") %>
-      </p>
-      <%= link_to 'Edit', edit_memory_module_path(@memory_module) %> |
-      <%= link_to 'Back', memory_modules_path %>
-    </td>
-  </tr>
-</table>
+<%- model_class = MemoryModule -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:brand) %>:</strong></dt>
+  <dd><%= @memory_module.brand %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:model) %>:</strong></dt>
+  <dd><%= @memory_module.model %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:modeltype) %>:</strong></dt>
+  <dd><%= @memory_module.modeltype %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:capacity) %>:</strong></dt>
+  <dd><%= @memory_module.capacity %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:modules) %>:</strong></dt>
+  <dd><%= @memory_module.modules %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:buildform) %>:</strong></dt>
+  <dd><%= @memory_module.buildform %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:speed) %>:</strong></dt>
+  <dd><%= @memory_module.speed %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:information) %>:</strong></dt>
+  <dd><%= @memory_module.information %></dd>
+</dl>
+
+<%= link_to t('.back', :default => t("helpers.links.back")),
+              memory_modules_path, :class => 'btn btn-default'  %>
+<%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_memory_module_path(@memory_module), :class => 'btn btn-default' %>
+<%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              memory_module_path(@memory_module),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>

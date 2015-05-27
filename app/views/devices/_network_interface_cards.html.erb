@@ -1,3 +1,49 @@
-<% network_interface_cards.each do |nic| %>
-   <%= nic.title %><br>
+<%- model_class = NetworkInterfaceCard -%>
+<br>
+<% device.network_interface_cards.each do |nic| %>
+    <%= nic.title %>
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th><%= model_class.human_attribute_name(:iface) %></th>
+        <th><%= model_class.human_attribute_name(:nr) %></th>
+        <th><%= model_class.human_attribute_name(:ip4) %></th>
+        <th><%= model_class.human_attribute_name(:router) %></th>
+        <th><%= model_class.human_attribute_name(:ip6) %></th>
+        <th><%= model_class.human_attribute_name(:router) %></th>
+        <th><%= model_class.human_attribute_name(:subnet) %></th>
+        <th><%= model_class.human_attribute_name(:dns) %></th>
+        <th><%= model_class.human_attribute_name(:prefix) %></th>
+        <th><%= model_class.human_attribute_name(:domains) %></th>
+        <th><%= model_class.human_attribute_name(:mac) %></th>
+        <th><%= model_class.human_attribute_name(:speed) %></th>
+        <th><%= model_class.human_attribute_name(:duplex) %></th>
+        <th><%= model_class.human_attribute_name(:dhcp) %></th>
+        <th><%= model_class.human_attribute_name(:vlan) %></th>
+        <th><%= model_class.human_attribute_name(:online) %></th>
+      </tr>
+      </thead>
+      <tbody>
+      <% nic.network_interfaces.each do |ni| %>
+          <tr>
+            <td><%= ni.interface %></td>
+            <td><%= ni.roomnumber %></td>
+            <td><%= ni.ip %></td>
+            <td><%= ni.router %></td>
+            <td><%= ni.ip6 %></td>
+            <td><%= ni.router6 %></td>
+            <td><%= ni.subnet %></td>
+            <td><%= ni.dns %></td>
+            <td><%= ni.prefix %></td>
+            <td><%= ni.domains %></td>
+            <td><%= ni.mac %></td>
+            <td><%= ni.speed %></td>
+            <td><%= ni.duplex %></td>
+            <td><span class="<%= ni.dhcp ? 'glyphicon glyphicon-ok' : 'glyphicon glyphicon-remove' %>"></td>
+            <td><%= ni.vlan %></td>
+            <td><span class="<%= ni.online ? 'glyphicon glyphicon-ok' : 'glyphicon glyphicon-remove' %>"></td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
 <% end %>

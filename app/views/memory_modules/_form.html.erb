@@ -1,50 +1,22 @@
-<%= form_for(@memory_module) do |f| %>
-    <% if @memory_module.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@memory_module.errors.count, "error") %> prohibited this device from being saved:</h2>
+<%= simple_form_for @memory_module, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :brand %>
+  <%= error_span(@memory_module[:brand]) %>
+  <%= f.input :model %>
+  <%= error_span(@memory_module[:model]) %>
+  <%= f.input :modeltype %>
+  <%= error_span(@memory_module[:modeltype]) %>
+  <%= f.input :capacity %>
+  <%= error_span(@memory_module[:capacity]) %>
+  <%= f.input :modules %>
+  <%= error_span(@memory_module[:modules]) %>
+  <%= f.input :buildform %>
+  <%= error_span(@memory_module[:buildform]) %>
+  <%= f.input :speed %>
+  <%= error_span(@memory_module[:speed]) %>
+  <%= f.input :information %>
+  <%= error_span(@memory_module[:information]) %>
 
-          <ul>
-            <% @memory_module.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-            <% end %>
-          </ul>
-        </div>
-    <% end %>
-
-    <div class="field">
-      <%= f.label :brand %><br>
-      <%= f.text_field :brand %>
-    </div>
-    <div class="field">
-      <%= f.label :model %><br>
-      <%= f.text_field :model %>
-    </div>
-    <div class="field">
-      <%= f.label :model_type %><br>
-      <%= f.text_field :model_type %>
-    </div>
-    <div class="field">
-      <%= f.label :capacity %><br>
-      <%= f.number_field :capacity %> GB
-    </div>
-    <div class="field">
-      <%= f.label :modules %><br>
-      <%= f.number_field :modules %>
-    </div>
-    <div class="field">
-      <%= f.label :buildform %><br>
-      <%= f.text_field :buildform %>
-    </div>
-    <div class="field">
-      <%= f.label :speed %><br>
-      <%= f.text_field :speed %> Mhz
-    </div>
-    <div class="field">
-      <%= f.label :information %><br>
-      <%= f.text_field :information %>
-    </div>
-
-    <div class="actions">
-      <%= f.submit %>
-    </div>
+  <%= f.button :submit, :class => 'btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                memory_modules_path, :class => 'btn btn-default' %>
 <% end %>

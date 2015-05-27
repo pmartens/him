@@ -1,37 +1,29 @@
-<table id="network_interface_cards">
-  <tr>
-    <td>
-      <p id="notice"><%= notice %></p>
-      <p>
-        <strong>Brand:</strong>
-        <%= @network_interface_card.brand %>
-      </p>
-      <p>
-        <strong>Type:</strong>
-        <%= @network_interface_card.device_type %>
-      </p>
-      <p>
-        <strong>Chipset:</strong>
-        <%= @network_interface_card.chipset %>
-      </p>
-      <p>
-        <strong>TransferRate:</strong>
-        <%= @network_interface_card.transfer_rate %>
-      </p>
-      <p>
-        <strong>Interface:</strong>
-        <%= @network_interface_card.interface %>
-      </p>
-      <p>
-        <strong>Created at:</strong>
-        <%= @network_interface_card.created_at.strftime("%Y-%m-%d %H:%M") %>
-      </p>
-      <p>
-        <strong>Updated at:</strong>
-        <%= @network_interface_card.updated_at.strftime("%Y-%m-%d %H:%M") %>
-      </p>
-      <%= link_to 'Edit', edit_device_network_interface_card_path(@device, @network_interface_card) %> |
-      <%= link_to 'Back', device_network_interface_cards_path(@device) %>
-    </td>
-  </tr>
-</table>
+<%- model_class = NetworkInterfaceCard -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:brand) %>:</strong></dt>
+  <dd><%= @network_interface_card.brand %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:device_type) %>:</strong></dt>
+  <dd><%= @network_interface_card.device_type %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:chipset) %>:</strong></dt>
+  <dd><%= @network_interface_card.chipset %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:transfer_rate) %>:</strong></dt>
+  <dd><%= @network_interface_card.transfer_rate %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:interface) %>:</strong></dt>
+  <dd><%= @network_interface_card.interface %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:device_id) %>:</strong></dt>
+  <dd><%= @network_interface_card.device_id %></dd>
+</dl>
+
+<%= link_to t('.back', :default => t("helpers.links.back")),
+              network_interface_cards_path, :class => 'btn btn-default'  %>
+<%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_network_interface_card_path(@network_interface_card), :class => 'btn btn-default' %>
+<%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              network_interface_card_path(@network_interface_card),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>

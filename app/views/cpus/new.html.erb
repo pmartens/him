@@ -1,9 +1,5 @@
-<table id="cpus">
-  <tr>
-    <td>
-      <h1>New CPU</h1>
-      <%= render 'form' %>
-      <%= link_to 'Back', cpus_path %>
-    </td>
-  </tr>
-</table>
+<%- model_class = Cpu -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => [:'helpers.titles.new', 'New %{model}'], :model => model_class.model_name.human.titleize %></h1>
+</div>
+<%= render :partial => 'form' %>

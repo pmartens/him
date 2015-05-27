@@ -1,81 +1,49 @@
-<table id="network_interfaces">
-  <tr>
-    <td>
-      <p id="notice"><%= notice %></p>
-      <p>
-        <strong>RoomNumber:</strong>
-        <%= @network_interface.roomnumber %>
-      </p>
-      <p>
-        <strong>Interface:</strong>
-        <%= @network_interface.interface %>
-      </p>
-      <p>
-        <strong>IP4-Adres:</strong>
-        <%= @network_interface.ip %>
-      </p>
-      <p>
-        <strong>Subnetmasker:</strong>
-        <%= @network_interface.subnet %>
-      </p>
-      <p>
-        <strong>Router:</strong>
-        <%= @network_interface.router %>
-      </p>
-      <p>
-        <strong>DNS Servers:</strong>
-        <%= @network_interface.dns %>
-      </p>
-      <p>
-        <strong>IP6-Adres:</strong>
-        <%= @network_interface.ip6 %>
-      </p>
-      <p>
-        <strong>IP6 Router:</strong>
-        <%= @network_interface.router6 %>
-      </p>
-      <p>
-        <strong>Prefix:</strong>
-        <%= @network_interface.prefix %>
-      </p>
-      <p>
-        <strong>Domains:</strong>
-        <%= @network_interface.domains %>
-      </p>
-      <p>
-        <strong>MAC-Adres:</strong>
-        <%= @network_interface.mac %>
-      </p>
-      <p>
-        <strong>Speed</strong>:</strong>
-        <%= @network_interface.speed %>
-      </p>
-      <p>
-        <strong>Duplex:</strong>
-        <%= @network_interface.duplex %>
-      </p>
-      <p>
-        <strong>DHCP:</strong>
-        <%= @network_interface.dhcp %>
-      </p>
-      <p>
-        <strong>vLAN:</strong>
-        <%= @network_interface.vlan %>
-      </p>
-      <p>
-        <strong>Online:</strong>
-        <%= @network_interface.online %>
-      </p>
-      <p>
-        <strong>Created at:</strong>
-        <%= @network_interface.created_at.strftime("%Y-%m-%d %H:%M") %>
-      </p>
-      <p>
-        <strong>Updated at:</strong>
-        <%= @network_interface.updated_at.strftime("%Y-%m-%d %H:%M") %>
-      </p>
-      <%= link_to 'Edit', edit_device_network_interface_card_network_interface_path(@device, @network_interface_card, @network_interface) %> |
-      <%= link_to 'Back', device_network_interface_card_network_interfaces_path %>
-    </td>
-  </tr>
-</table>
+<%- model_class = NetworkInterface -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:interface) %>:</strong></dt>
+  <dd><%= @network_interface.interface %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:roomnumber) %>:</strong></dt>
+  <dd><%= @network_interface.roomnumber %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:ip) %>:</strong></dt>
+  <dd><%= @network_interface.ip %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:subnet) %>:</strong></dt>
+  <dd><%= @network_interface.subnet %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:router) %>:</strong></dt>
+  <dd><%= @network_interface.router %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:dns) %>:</strong></dt>
+  <dd><%= @network_interface.dns %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:ip6) %>:</strong></dt>
+  <dd><%= @network_interface.ip6 %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:router6) %>:</strong></dt>
+  <dd><%= @network_interface.router6 %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:prefix) %>:</strong></dt>
+  <dd><%= @network_interface.prefix %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:domains) %>:</strong></dt>
+  <dd><%= @network_interface.domains %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:mac) %>:</strong></dt>
+  <dd><%= @network_interface.mac %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:speed) %>:</strong></dt>
+  <dd><%= @network_interface.speed %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:duplex) %>:</strong></dt>
+  <dd><%= @network_interface.duplex %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:dhcp) %>:</strong></dt>
+  <dd><span class="<%= @network_interface.dhcp ? 'glyphicon glyphicon-ok' : 'glyphicon glyphicon-remove' %>"></dd>
+  <dt><strong><%= model_class.human_attribute_name(:vlan) %>:</strong></dt>
+  <dd><%= @network_interface.vlan %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:online) %>:</strong></dt>
+  <dd><span class="<%= @network_interface.online ? 'glyphicon glyphicon-ok' : 'glyphicon glyphicon-remove' %>"></dd>
+  <dt><strong><%= model_class.human_attribute_name(:created_at) %>:</strong></dt>
+  <dd><%= @network_interface.created_at.strftime("%Y-%m-%d %H:%M") %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:updated_at) %>:</strong></dt>
+  <dd><%= @network_interface.updated_at.strftime("%Y-%m-%d %H:%M") %></dd>
+</dl>
+
+<%= link_to t('.back', :default => t("helpers.links.back")), device_network_interface_card_network_interfaces_path, :class => 'btn btn-default'  %>
+<%= link_to t('.edit', :default => t("helpers.links.edit")), edit_device_network_interface_card_network_interface_path(@device, @network_interface_card, @network_interface), :class => 'btn btn-default' %>
+<%= link_to t('.destroy', :default => t("helpers.links.destroy")), device_network_interface_card_network_interface_path(@device, @network_interface_card, @network_interface), :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>

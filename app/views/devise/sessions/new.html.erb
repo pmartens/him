@@ -1,5 +1,7 @@
 <div class="login">
+  <div class="login_logo"><center>Hardware Inventory Manager</center></div>
   <table>
+    <%#= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => 'form-horizontal' }) do |f| %>
     <%= form_for(resource, as: resource_name, url: session_path(resource_name), class: "form-horizontal") do |f| %>
 
         <tr class="field">
@@ -16,7 +18,7 @@
             </tr>
         <% end -%>
         <tr class="actions">
-          <td><%= f.submit "Log in" %></td>
+          <td><%= f.submit "Log in", :class => 'btn btn-primary' %></td>
         </tr>
     <% end %>
     <tr>

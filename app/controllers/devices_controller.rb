@@ -1,5 +1,7 @@
 class DevicesController < ApplicationController
 
+  add_breadcrumb :index, :devices_path
+
   before_action :set_device, only: [:show, :edit, :update, :destroy]
 
   respond_to :html
@@ -56,6 +58,7 @@ class DevicesController < ApplicationController
 
     def set_device
       @device = Device.find(params[:id])
+      add_breadcrumb @device.name
     end
 
     def device_params

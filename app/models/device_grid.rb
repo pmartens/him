@@ -24,36 +24,36 @@ class DeviceGrid
       link_to model.name, model
     end
   end
-  column(:device_type) do
+  column(:device_type, :header => "Type") do
     self.device_type.title unless self.device_type.nil?
   end
-  column(:manufacturer) do |model|
+  column(:manufacturer, :header => "") do |model|
     format(model.manufacturer) do
       render :partial => "devices/manufacturer", :locals => {:model => model}
     end
   end
-  column(:model_name)
-  column(:serialnumber) do |model|
+  column(:model_name, :header => "Model")
+  column(:serialnumber, :html => false) do |model|
     format(model.servicetag) do
       model.servicetag.present? ? link_to(model.serialnumber, model.servicetag) : model.serialnumber
     end
   end
   column(:age)
-  column(:purchased_at)
-  column(:color) do |model|
-    format(model.color) do
-      render :partial => "devices/color", :locals => {:device => model}
-    end
-  end
-  column(:number_of_cpu)
-  column(:cpu) do
+  column(:purchased_at, :html => false)
+  # column(:color) do |model|
+  #   format(model.color) do
+  #     render :partial => "devices/color", :locals => {:device => model}
+  #   end
+  # end
+  column(:number_of_cpu, :html => false)
+  column(:cpu, :html => false) do
     self.cpu.title unless self.cpu.nil?
   end
-  column(:number_of_mem)
-  column(:memory_module) do
+  column(:number_of_mem, :html => false)
+  column(:memory_module, :html => false) do
     self.memory_module.title unless self.memory_module.nil?
   end
-  # column(:network_interfaces) do |model|
+  #  column(:network_interfaces) do |model|
   #   format(model.network_interface_cards) do
   #     render :partial => "devices/network_interface_cards", :locals => {:network_interface_cards => model.network_interface_cards}
   #   end
@@ -74,11 +74,11 @@ class DeviceGrid
   #   end
   # end
 
-  column(:network_interfaces) do
+  column(:network_interfaces, :html => false) do
     self.network_interface_cards.map{|i| i.title}.join(', ')
   end
 
-  column(:room_numbers) do
+  column(:room_numbers, header: "Room Nrs.") do
     self.room_numbers.join(', ')
   end
 
@@ -112,17 +112,17 @@ class DeviceGrid
   column(:updated_at, :html => false) do
     self.updated_at.strftime("%Y-%m-%d %H:%M")
   end
-  column(:nic, :html => true) do |model|
-    link_to "NIC", device_network_interface_cards_path(model)
+  column(:nic, :header => "", :html => true) do |model|
+    link_to "", device_network_interface_cards_path(model), :class => 'glyphicon glyphicon-hdd'
   end
-  column(:documents, :html => true) do |model|
-    link_to "Docs", device_documents_path(model)
+  column(:documents, :header => "", :html => true) do |model|
+    link_to "", device_documents_path(model), :class => 'glyphicon glyphicon-file'
   end
-  column(:edit, :html => true) do |model|
-    link_to "Edit", edit_device_path(model)
+  column(:edit, :header => "", :html => true) do |model|
+    link_to "", edit_device_path(model), :class => 'glyphicon glyphicon-edit'
   end
-  column(:delete, :html => true) do |model|
-    link_to "Destroy", model, method: :delete, data: { confirm: 'Are you sure?' }
+  column(:delete, :header => "", :html => true) do |model|
+    link_to "", model, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'glyphicon glyphicon-trash icon-danger'
   end
 
 end

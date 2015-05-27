@@ -1,12 +1,14 @@
-#main {
-  background-image: image-url('login_bg.png');
-  background-color: #2E2F30;
-}
-
-
 .login {
   table {
     margin-left: auto;
     margin-right: auto
   }
+}
+
+.login_logo {
+  font-size: 18px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  margin-left:auto;
+  margin-right:auto;
 }

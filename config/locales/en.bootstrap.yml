@@ -7,6 +7,33 @@ en:
       root: "Index"
     pages:
       pages: "Pages"
+    cpus:
+      index_devices: "Devices"
+      index: "CPU's"
+    devices:
+      index: "Devices"
+    documents:
+      index_devices: "Devices"
+      index:  "Documents"
+    memory_modules:
+      index_devices: "Devices"
+      index: "Memory modules"
+    network_interface_cards:
+      index_devices: "Devices"
+      index: "Network interface cards"
+    network_interfaces:
+      index_devices: "Devices"
+      index_network_interface_cards: "Network Interface cards"
+      index: "Network interfaces"
+    programs:
+      index_devices: "Devices"
+      index: "Programs"
+    roles:
+      index: "Roles"
+    users:
+      index: "Users"
+      registrations:
+        index: "User settings"
   helpers:
     actions: "Actions"
     links:

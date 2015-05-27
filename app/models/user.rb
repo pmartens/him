@@ -45,9 +45,12 @@ class User < ActiveRecord::Base
   def ldap_before_save
     self.email = Devise::LDAP::Adapter.get_ldap_param(self.username, "mail").first
     self.encrypted_password = Devise::LDAP::Adapter.get_ldap_param(self.username, "userPassword").first
-    display_name = Devise::LDAP::Adapter.get_ldap_param(self.username, "displayName" ).first.split(' ')
-    self.firstname = display_name[1]
-    self.lastname = display_name.shift
+    display_name = Devise::LDAP::Adapter.get_ldap_param(self.username, "displayName" )
+    if display_name.present?
+      display_name = display_name.first.split(' ')
+      self.firstname = display_name[1]
+      self.lastname = display_name.shift
+    end
   end
 
   # hack for remember_token

@@ -1,43 +1,43 @@
-<table id="cpus">
-  <tr>
-    <td>
-      <h1>Listing CPU's</h1>
-      <table id="datatable">
-        <thead>
-        <tr>
-          <th>Brand</th>
-          <th>Processor Number</th>
-          <th>Instruction Set</th>
-          <th>Cores</th>
-          <th>Threads</th>
-          <th>Frequency</th>
-          <th>Socket Type</th>
-          <th>Created at</th>
-          <th>Update at</th>
-          <th colspan="3"></th>
-        </tr>
-        </thead>
-        <tbody>
-        <% @cpus.each do |cpu| %>
-            <tr>
-              <td><%= cpu.brand %></td>
-              <td><%= cpu.processor_number %></td>
-              <td><%= cpu.instruction_set %></td>
-              <td><%= cpu.cores %></td>
-              <td><%= cpu.threads %></td>
-              <td><%= cpu.frequency %></td>
-              <td><%= cpu.socket_type %></td>
-              <td><%= cpu.created_at.strftime("%Y-%m-%d %H:%M") %></td>
-              <td><%= cpu.updated_at.strftime("%Y-%m-%d %H:%M") %></td>
-              <td><%= link_to 'Show', cpu %></td>
-              <td><%= link_to 'Edit', edit_cpu_path(cpu) %></td>
-              <td><%= link_to 'Destroy', cpu, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-            </tr>
-        <% end %>
-        </tbody>
-      </table>
-      <br>
-      <%= link_to 'New CPU', new_cpu_path %>
-    </td>
-  </tr>
+<%- model_class = Cpu -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<%= link_to t('.new', :default => t("helpers.links.new")), new_cpu_path, :class => 'btn btn-primary' %>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:brand) %></th>
+      <th><%= model_class.human_attribute_name(:processor_number) %></th>
+      <th><%= model_class.human_attribute_name(:instruction_set) %></th>
+      <th><%= model_class.human_attribute_name(:cores) %></th>
+      <th><%= model_class.human_attribute_name(:threads) %></th>
+      <th><%= model_class.human_attribute_name(:frequency) %></th>
+      <th><%= model_class.human_attribute_name(:socket_type) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%= model_class.human_attribute_name(:updated_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @cpus.each do |cpu| %>
+      <tr>
+        <td><%= link_to cpu.brand, cpu_path(cpu) %></td>
+        <td><%= cpu.processor_number %></td>
+        <td><%= cpu.instruction_set %></td>
+        <td><%= cpu.cores %></td>
+        <td><%= cpu.threads %></td>
+        <td><%= cpu.frequency %></td>
+        <td><%= cpu.socket_type %></td>
+        <td><%= cpu.created_at.strftime("%Y-%m-%d %H:%M") %></td>
+        <td><%= cpu.updated_at.strftime("%Y-%m-%d %H:%M") %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")), edit_cpu_path(cpu), :class => 'btn btn-default btn-xs' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")), cpu_path(cpu), :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-xs btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
+<%= link_to t('.back', :default => t("helpers.links.back")), devices_path, :class => 'btn btn-primary' %>

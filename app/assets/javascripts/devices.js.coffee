@@ -6,6 +6,5 @@ jQuery ->
     $('#filters').hide()
     $('#toggle-filters').click ->
       $('#filters').slideToggle()
-
   $(document).ready(ready)
   $(document).on('page:load', ready)

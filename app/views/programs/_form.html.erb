@@ -1,42 +1,10 @@
-<%= form_for(@program) do |f| %>
-    <% if @program.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@program.errors.count, "error") %> prohibited this device from being saved:</h2>
-
-          <ul>
-            <% @program.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-            <% end %>
-          </ul>
-        </div>
-    <% end %>
-
-    <div class="field">
-      <%= f.label :title %><br>
-      <%= f.text_field :title %>
-    </div>
-    <div class="field">
-      <%= f.label :version %><br>
-      <%= f.text_field :version %>
-    </div>
-    <div class="field">
-      <%= f.label :OS %><br>
-      <%= f.check_box :os %>
-    </div>
-    <div class="field">
-      <%= f.label :purchased_at %><br>
-      <%= f.date_field :purchased_at %>
-    </div>
-    <div class="field">
-      <%= f.label :license %><br>
-      <%= f.text_field :license %>
-    </div>
-    <div class="field">
-      <%= f.label :properties %><br>
-      <%= f.text_field :properties %>
-    </div>
-
-    <div class="actions">
-      <%= f.submit %>
-    </div>
+<%= simple_form_for @program, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :title %>
+  <%= f.input :version %>
+  <%= f.input :purchased_at, :as => :date_picker %>
+  <%= f.input :license %>
+  <%= f.input :properties %>
+  <%= f.input :os, as: :boolean, checked_value: true, unchecked_value: false %>
+  <%= f.button :submit, :class => 'btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")), programs_path, :class => 'btn btn-default' %>
 <% end %>

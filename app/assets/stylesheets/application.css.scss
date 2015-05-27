@@ -1,0 +1,152 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ *= require jquery.minicolors
+ */
+
+@font-face {
+  font-family: 'Glyphicons Halflings';
+  src: url(asset_path('glyphicons-halflings-regular.eot'));
+  src: url(asset_path('glyphicons-halflings-regular.eot?#iefix')) format('embedded-opentype'), url(asset_path('glyphicons-halflings-regular.woff')) format('woff'), url(asset_path('glyphicons-halflings-regular.ttf')) format('truetype'), url(asset_path('glyphicons-halflings-regular.svg#glyphicons_halflingsregular')) format('svg');
+}
+
+body {
+    background-image: image-url('login_bg.png');
+    background-color: #555555;
+}
+
+#nav {
+    background-color: #2E2F30;
+}
+
+.navbar {
+    background-color: #2E2F30;
+    margin-bottom: 0px;
+}
+
+.navbar-default {
+    border-color: #2E2F30;
+}
+
+.navbar-default .navbar-brand {
+    color: white;
+}
+
+.navbar-default .navbar-nav>li>a {
+    color: cornflowerblue;
+    &:hover {
+      color: white;
+    }
+}
+
+.container {
+    background-color: white;
+}
+
+.row {
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+form {
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+.page-header {
+    margin: 0;
+    padding-bottom: 0px;
+}
+
+a {
+  color: cornflowerblue;
+  &:visited {
+    color: cornflowerblue;
+  }
+  &:hover {
+    color: #2E2F30;
+  }
+}
+
+.btn {
+  color: white;
+  &:visited {
+    color: white;
+  }
+}
+
+.btn-default {
+  color: white;
+  background-color: cornflowerblue;
+  border-color: cornflowerblue;
+  &:hover {
+    color: black;
+    background-color: lightsteelblue;
+    border-color: #ccc;
+  }
+  &:visited {
+    color: white;
+  }
+}
+
+.input {
+  &.button {
+    color: white;
+    background-color: cornflowerblue;
+    border-color: cornflowerblue;
+    &:hover {
+      color: black;
+      background-color: lightsteelblue;
+      border-color: #ccc;
+    }
+  }
+}
+
+.btn-danger {
+  &:hover {
+    color: black;
+    background-color: palevioletred;
+    border-color: #d43f3a;
+  }
+}
+
+.icon-danger {
+  color: #d9534f;
+  &:visited {
+    color: #d9534f;
+  }
+  &:hover {
+    color: #2E2F30;
+  }
+}
+
+
+footer {
+  p {
+    text-align: center;
+    color: lightgrey;
+  }
+}
+
+h1 {
+    font-size: 18px;
+}
+
+input {
+    color: #000000;
+}
+
+.glyphicon {
+  font-size: 1.2em;
+}

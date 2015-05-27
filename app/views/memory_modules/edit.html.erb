@@ -1,10 +1,5 @@
-<table id="memory_modules">
-  <tr>
-    <td>
-      <h1>Editing Memory module</h1>
-      <%= render 'form' %>
-      <%= link_to 'Show', @memory_module %> |
-      <%= link_to 'Back', memory_module_path %>
-    </td>
-  </tr>
-</table>
+<%- model_class = MemoryModule -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => model_class.model_name.human.titleize %></h1>
+</div>
+<%= render :partial => 'form' %>

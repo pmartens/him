@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150329202532) do
+ActiveRecord::Schema.define(version: 20150523174532) do
 
   create_table "cpus", force: true do |t|
     t.string   "brand"
@@ -70,6 +70,7 @@ ActiveRecord::Schema.define(version: 20150329202532) do
     t.integer  "document_file_size"
     t.datetime "document_updated_at"
     t.integer  "device_id"
+    t.string   "name"
   end
 
   create_table "manufacturers", force: true do |t|
