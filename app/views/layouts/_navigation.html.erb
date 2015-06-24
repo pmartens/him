@@ -5,22 +5,15 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <a class="navbar-brand" href="#">Him</a>
+    <%= link_to "HIM", main_app.root_path, class: "navbar-brand"  %>
     <div class="navbar-collapse collapse navbar-responsive-collapse">
       <ul class="nav navbar-nav">
         <% if user_signed_in? %>
-              <li><%= link_to "Users", root_path %></li>
-              <% if can? :manage, Role %>
-                  <li><%= link_to "Roles", roles_path %></li>
-              <% end %>
-              <% if can? :manage, Device %>
-                  <li><%= link_to "Devices", devices_path %></li>
-              <% end %>
-              <% if can? :manage, Program %>
-                  <li><%= link_to "Programs", programs_path %></li>
-              <% end %>
-              <li><%= link_to current_user.username, edit_user_registration_path %></li>
-              <li><%= link_to "Log out", destroy_user_session_path, :method => :delete %></li>
+            <li><%= link_to "Users", main_app.users_path %></li>
+            <li><%= link_to "Devices", main_app.devices_path if can? :manage, Device %></li>
+            <li><%= link_to "Programs", main_app.programs_path if can? :manage, Program %></li>
+            <li><%= link_to current_user.username, main_app.edit_user_registration_path %></li>
+            <li><%= link_to "Log out", main_app.destroy_user_session_path, :method => :delete %></li>
         <% end %>
       </ul>
     </div>

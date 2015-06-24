@@ -9,17 +9,9 @@
 <%= link_to "", "#", id: "toggle-filters", class: 'glyphicon glyphicon-filter' %>
 <%= link_to "", url_for(format: 'csv'), class: 'glyphicon glyphicon-file'  %>
 <%= link_to "", url_for(format: 'pdf'), class: 'glyphicon glyphicon-print' %>
+Total: <%= @grid.assets.total_count %>
 <br>
 <div id="filters"><%= datagrid_form_for @grid, :method => :get, :url => devices_path %></div>
 
 <%= datagrid_table(@grid) %>
 <%= paginate @grid.assets %>
-Total: <%= @grid.assets.total_count %>
-
-
-
-
-
-
-
-

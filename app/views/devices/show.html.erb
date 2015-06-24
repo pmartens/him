@@ -7,13 +7,13 @@
   <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
   <dd><%= @device.name %></dd>
   <dt><strong><%= model_class.human_attribute_name(:type) %>:</strong></dt>
-  <dd><%= @device.device_type.title  %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:model_name) %>:</strong></dt>
-  <dd><%= @device.model_name %></dd>
+  <dd><%= @device.device_type.title unless @device.device_type.nil? %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:device_model) %>:</strong></dt>
+  <dd><%= @device.device_model %></dd>
   <dt><strong><%= model_class.human_attribute_name(:manufacturer) %>:</strong></dt>
-  <dd><%= render :partial => "devices/manufacturer", :locals => {:model => @device} %><%= @device.manufacturer.title %></dd>
+  <dd><%= render :partial => "devices/manufacturer", :locals => {:model => @device} %><%= @device.manufacturer.title unless @device.manufacturer.nil? %></dd>
   <dt><strong><%= model_class.human_attribute_name(:purchased_at) %>:</strong></dt>
-  <dd><%= @device.purchased_at.strftime("%Y-%m-%d %H:%M") %></dd>
+  <dd><%= @device.purchased_at.strftime("%Y-%m-%d %H:%M") unless @device.purchased_at.nil? %></dd>
   <dt><strong><%= model_class.human_attribute_name(:age) %>:</strong></dt>
   <dd><%= @device.age %> years</dd>
   <dt><strong><%= model_class.human_attribute_name(:serialnumber) %>:</strong></dt>
@@ -21,7 +21,7 @@
   <dt><strong><%= model_class.human_attribute_name(:servicetag) %>:</strong></dt>
   <dd><%= link_to @device.servicetag, :target => "_blank" %></dd>
   <dt><strong><%= model_class.human_attribute_name(:consumer) %>:</strong></dt>
-  <dd><%= @device.user.full_name %></dd>
+  <dd><%= @device.user.full_name unless @device.user.nil? %></dd>
   <dt><strong><%= model_class.human_attribute_name(:color) %>:</strong></dt>
   <dd><%=  render :partial => "devices/color", :locals => {:device => @device} %></dd>
   <dt><strong><%= model_class.human_attribute_name(:cpu) %>:</strong></dt>

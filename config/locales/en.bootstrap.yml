@@ -7,6 +7,8 @@ en:
       root: "Index"
     pages:
       pages: "Pages"
+    dashboard:
+      index: "Dashboard"
     cpus:
       index_devices: "Devices"
       index: "CPU's"
@@ -29,6 +31,7 @@ en:
       index_devices: "Devices"
       index: "Programs"
     roles:
+      index_users: "Users"
       index: "Roles"
     users:
       index: "Users"

@@ -1,6 +1,5 @@
 class ProgramsController < ApplicationController
 
-  add_breadcrumb :index_devices, :devices_path
   add_breadcrumb :index, :programs_path
 
   before_action :set_program, only: [:show, :edit, :update, :destroy]
@@ -44,7 +43,7 @@ class ProgramsController < ApplicationController
 
   def set_program
     @program = Program.find(params[:id])
-    add_breadcrumb :index, @program.title
+    add_breadcrumb @program.title
   end
 
   def program_params

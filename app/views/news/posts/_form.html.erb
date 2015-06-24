@@ -1,0 +1,8 @@
+<%= simple_form_for @post, :html => { :class => 'form-horizontal' } do |p| %>
+    <%= p.input :title %>
+    <%= p.input :comment, as: :text %>
+    <%#= p.association :user, label_method: :full_name, value_method: :id, include_blank: true %>
+    <%= p.association :user, as: :hidden, :input_html => { :value => current_user.id } %>
+    <%= p.button :submit, :class => 'btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")), news.posts_path, :class => 'btn btn-default' %>
+<% end %>

@@ -1,0 +1,34 @@
+<h1>Dashboard</h1>
+<%= link_to t('.new', :default => t("helpers.links.new")), news.new_post_path, :class => 'btn btn-primary' %>
+<table class="table table-striped">
+  <tbody>
+  <% @posts.each do |post| %>
+      <tr>
+        <td>
+          <table class="post">
+            <tbody>
+              <tr>
+                <td class="post-left">
+                  <%= image_tag post.user.gravatar_url(:size => 30) %>
+                  <p><%= post.updated_at.strftime("Posted at %Y-%m-%d %H:%M") + " by " %><%= link_to post.user.username, main_app.user_path(post.user)  %></p>
+                  <div class="post_actions">
+                    <% if (can? :manage, News::Post) && (post.user == current_user || post.user.roles.is_admin) %>
+                      <%= link_to t('.edit', :default => t("helpers.links.edit")), news.edit_post_path(post), :class => 'btn btn-default btn-xs' %>
+                      <%= link_to t('.destroy', :default => t("helpers.links.destroy")), news.post_path(post), :method => :delete,
+                                  :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                                  :class => 'btn btn-xs btn-danger' %>
+                    <% end %>
+                  </div>
+                </td>
+                <td class="post-right">
+                  <h2><%= post.title %></h2>
+                  <%= post.comment %>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>

@@ -3,9 +3,11 @@
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
 </div>
 <%= link_to t('.new', :default => t("helpers.links.new")), new_user_path, :class => 'btn btn-primary' %>
+<%= link_to "Roles", roles_path, class: 'btn btn-primary' if can? :manage, Role %>
 <table class="table table-striped">
   <thead>
     <tr>
+      <th></th>
       <th><%= model_class.human_attribute_name(:username) %></th>
       <th><%= model_class.human_attribute_name(:email) %></th>
       <th><%= model_class.human_attribute_name(:last_sign_in_at) if can? :manage, User %></th>
@@ -19,9 +21,10 @@
   <tbody>
     <% @users.each do |user| %>
       <tr>
+        <td><%= image_tag user.gravatar_url(:size => 30) %></td>
         <td><%= link_to user.username, user_path(user) %></td>
         <td><%= user.email %></td>
-        <td><%= user.last_sign_in_at.strftime("%Y-%m-%d %H:%M") if can? :manage, User %></td>
+        <td><%= (user.last_sign_in_at.strftime("%Y-%m-%d %H:%M") unless user.last_sign_in_at.nil? ) if can? :manage, User %></td>
         <td><%= user.firstname %></td>
         <td><%= user.lastname %></td>
         <td><%= user.created_at.strftime("%Y-%m-%d %H:%M") %></td>

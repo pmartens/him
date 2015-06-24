@@ -2,7 +2,7 @@
   <%= f.input :name %>
   <%= f.association :manufacturer, label_method: :title, value_method: :id %>
   <%= f.association :device_type, label_method: :title, value_method: :id %>
-  <%= f.input :model_name %>
+  <%= f.input :device_model %>
   <%= f.input :serialnumber %>
   <%= f.input :servicetag %>
   <%= f.input :purchased_at, :as => :date_picker %>

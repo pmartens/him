@@ -1,5 +1,6 @@
 class RolesController < ApplicationController
 
+  add_breadcrumb :index_users, :users_path
   add_breadcrumb :index, :roles_path
 
   before_action :set_role, only: [:show, :edit, :update, :destroy]

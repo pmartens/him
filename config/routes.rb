@@ -2,7 +2,9 @@ Rails.application.routes.draw do
 
   devise_for :users, :path_prefix => 'my', :controllers => { :registrations => "users/registrations" }
 
-  root to: "users#index"
+  root to: 'dashboard#index'
+
+  mount News::Engine => "/news"
 
   resources :users
   resources :roles

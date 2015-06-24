@@ -1,0 +1,51 @@
+// Place all the styles related to the dashboard controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.post {
+  #position: relative;
+  border-color: lightgrey;
+  border-radius: 10px 10px 10px 10px;
+  -moz-border-radius: 10px 10px 10px 10px;
+  -webkit-border-radius: 10px 10px 10px 10px;
+  # -webkit-box-shadow: 9px 11px 22px -5px rgba(0,0,0,0.75);
+  # -moz-box-shadow: 9px 11px 22px -5px rgba(0,0,0,0.75);
+  # box-shadow: 9px 11px 22px -5px rgba(0,0,0,0.75);
+  background-color: #e8e8e8;
+}
+
+.post-left {
+  width: 15%;
+  vertical-align: top;
+  img {
+    padding-top: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  p {
+      padding-left: 5px;
+      padding-right: 5px;
+      padding-top: 0px;
+      padding-bottom: 0px;
+      margin-top: 0px;
+      margin-bottom: 0px;
+      font-size: 10px;
+  }
+}
+
+.post-right {
+  width: 85%;
+  vertical-align: top;
+  h2 {
+      padding-top: 5px;
+      padding-bottom: 0px;
+      margin-top: 0px;
+      margin-bottom: 0px;
+      font-size: 12px;
+      font-weight: bold;
+  }
+}
+
+.post_actions {
+  padding: 5px 5px;
+}

@@ -10,7 +10,7 @@ class DevicesController < ApplicationController
     @grid = DeviceGrid.new(params[:device_grid])
     respond_to do |f|
       f.html do
-        @grid.scope {|scope| scope.page(params[:page]).per(21) }
+        @grid.scope {|scope| scope.page(params[:page]) }
       end
       f.csv do
         send_data @grid.to_csv,

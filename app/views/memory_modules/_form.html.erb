@@ -1,21 +1,12 @@
 <%= simple_form_for @memory_module, :html => { :class => 'form-horizontal' } do |f| %>
   <%= f.input :brand %>
-  <%= error_span(@memory_module[:brand]) %>
   <%= f.input :model %>
-  <%= error_span(@memory_module[:model]) %>
   <%= f.input :modeltype %>
-  <%= error_span(@memory_module[:modeltype]) %>
   <%= f.input :capacity %>
-  <%= error_span(@memory_module[:capacity]) %>
   <%= f.input :modules %>
-  <%= error_span(@memory_module[:modules]) %>
   <%= f.input :buildform %>
-  <%= error_span(@memory_module[:buildform]) %>
   <%= f.input :speed %>
-  <%= error_span(@memory_module[:speed]) %>
   <%= f.input :information %>
-  <%= error_span(@memory_module[:information]) %>
-
   <%= f.button :submit, :class => 'btn-primary' %>
   <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
                 memory_modules_path, :class => 'btn btn-default' %>
