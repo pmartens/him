@@ -10,7 +10,10 @@
               <tr>
                 <td class="post-left">
                   <%= image_tag post.user.gravatar_url(:size => 30) %>
-                  <p><%= post.updated_at.strftime("Posted at %Y-%m-%d %H:%M") + " by " %><%= link_to post.user.username, main_app.user_path(post.user)  %></p>
+                  <p>
+                    Posted <%= time_ago_in_words post.updated_at %> ago <br>
+                    by <%= link_to post.user.username, main_app.user_path(post.user)  %>
+                  </p>
                   <div class="post_actions">
                     <% if (can? :manage, News::Post) && (post.user == current_user || post.user.roles.is_admin) %>
                       <%= link_to t('.edit', :default => t("helpers.links.edit")), news.edit_post_path(post), :class => 'btn btn-default btn-xs' %>
