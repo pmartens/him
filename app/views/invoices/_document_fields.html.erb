@@ -1,0 +1,5 @@
+<div class='nested-fields'>
+    <%= f.input :name, label: "Document name" %>
+    <%= f.input :document, as: :file, html: { class: 'btn-primary'} %>
+    <%= link_to_remove_association "remove document", f %>
+</div>

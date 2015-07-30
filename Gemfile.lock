@@ -1,21 +1,21 @@
 GIT
   remote: git://github.com/cschiewek/devise_ldap_authenticatable.git
-  revision: 608ef89dab75f34268ca21ffeb997fa288a83116
+  revision: 79bb676d40fc84ce0359b0581205b0bb16201fcb
   specs:
-    devise_ldap_authenticatable (0.8.5)
+    devise_ldap_authenticatable (0.8.6)
       devise (>= 3.4.1)
-      net-ldap (>= 0.3.1, < 0.6.0)
+      net-ldap (>= 0.6.0, <= 0.11)
 
 GIT
   remote: git://github.com/derekprior/momentjs-rails.git
-  revision: 9fac38f9b7603ad5da4cba4d971654370f9e2d7b
+  revision: 85334f46df85cccb4c8fbaf07f0757f57801b9a9
   specs:
-    momentjs-rails (2.10.2)
+    momentjs-rails (2.10.3)
       railties (>= 3.1)
 
 GIT
   remote: git://github.com/elasticsearch/elasticsearch-rails.git
-  revision: 738c63efacc167b6e8faae3b01a1a0135cfc8bbb
+  revision: ded20356920802c35d258756113acfd95b25ade6
   specs:
     elasticsearch-model (0.1.7)
       activesupport (> 3)
@@ -25,7 +25,7 @@ GIT
 
 GIT
   remote: git://github.com/seyhunak/twitter-bootstrap-rails.git
-  revision: c5297b18b8f37afe33d764eb5201c8ddc5902995
+  revision: 935f53bb55ef736260fa2ef04e29da2fc3fb2b3f
   specs:
     twitter-bootstrap-rails (3.2.1)
       actionpack (>= 3.1)
@@ -44,10 +44,16 @@ GIT
 
 GIT
   remote: git@github.com:bogdan/datagrid.git
-  revision: 27690a10ecb6754435d660918b702760428a9d59
+  revision: a72e3c61709a82db357ccadf75db1e9b8beb53f0
   specs:
     datagrid (1.3.9)
       rails (>= 3.2.18)
+
+PATH
+  remote: ../contacts
+  specs:
+    contacts (0.0.1)
+      rails (~> 4.2.3)
 
 PATH
   remote: ../news
@@ -59,45 +65,45 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
-    actionmailer (4.2.1)
-      actionpack (= 4.2.1)
-      actionview (= 4.2.1)
-      activejob (= 4.2.1)
+    actionmailer (4.2.3)
+      actionpack (= 4.2.3)
+      actionview (= 4.2.3)
+      activejob (= 4.2.3)
       mail (~> 2.5, >= 2.5.4)
       rails-dom-testing (~> 1.0, >= 1.0.5)
-    actionpack (4.2.1)
-      actionview (= 4.2.1)
-      activesupport (= 4.2.1)
+    actionpack (4.2.3)
+      actionview (= 4.2.3)
+      activesupport (= 4.2.3)
       rack (~> 1.6)
       rack-test (~> 0.6.2)
       rails-dom-testing (~> 1.0, >= 1.0.5)
-      rails-html-sanitizer (~> 1.0, >= 1.0.1)
-    actionview (4.2.1)
-      activesupport (= 4.2.1)
+      rails-html-sanitizer (~> 1.0, >= 1.0.2)
+    actionview (4.2.3)
+      activesupport (= 4.2.3)
       builder (~> 3.1)
       erubis (~> 2.7.0)
       rails-dom-testing (~> 1.0, >= 1.0.5)
-      rails-html-sanitizer (~> 1.0, >= 1.0.1)
-    activejob (4.2.1)
-      activesupport (= 4.2.1)
+      rails-html-sanitizer (~> 1.0, >= 1.0.2)
+    activejob (4.2.3)
+      activesupport (= 4.2.3)
       globalid (>= 0.3.0)
-    activemodel (4.2.1)
-      activesupport (= 4.2.1)
+    activemodel (4.2.3)
+      activesupport (= 4.2.3)
       builder (~> 3.1)
-    activerecord (4.2.1)
-      activemodel (= 4.2.1)
-      activesupport (= 4.2.1)
+    activerecord (4.2.3)
+      activemodel (= 4.2.3)
+      activesupport (= 4.2.3)
       arel (~> 6.0)
-    activesupport (4.2.1)
+    activesupport (4.2.3)
       i18n (~> 0.7)
       json (~> 1.7, >= 1.7.7)
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
-    arel (6.0.0)
+    arel (6.0.2)
     ast (2.0.0)
-    astrolabe (1.3.0)
-      parser (>= 2.2.0.pre.3, < 3.0)
+    astrolabe (1.3.1)
+      parser (~> 2.2)
     bcrypt (3.1.10)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
@@ -107,6 +113,7 @@ GEM
       activesupport (>= 3.0)
     cocaine (0.5.7)
       climate_control (>= 0.0.3, < 1.0)
+    cocoon (1.2.6)
     coderay (1.1.0)
     coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
@@ -116,6 +123,13 @@ GEM
       execjs
     coffee-script-source (1.9.1.1)
     commonjs (0.2.7)
+    countries (0.11.5)
+      currencies (~> 0.4.2)
+      i18n_data (~> 0.7.0)
+    country_select (2.2.0)
+      countries (~> 0.11.0)
+      sort_alphabetical (~> 1.0)
+    currencies (0.4.2)
     debug_inspector (0.0.2)
     devise (3.5.1)
       bcrypt (~> 3.0)
@@ -142,13 +156,14 @@ GEM
     hashie (3.4.2)
     hike (1.2.3)
     i18n (0.7.0)
-    jbuilder (2.2.16)
+    i18n_data (0.7.0)
+    jbuilder (2.3.1)
       activesupport (>= 3.0.0, < 5)
       multi_json (~> 1.2)
     jquery-minicolors-rails (2.1.4.0)
       jquery-rails
       rails (>= 3.2.8)
-    jquery-rails (4.0.3)
+    jquery-rails (4.0.4)
       rails-dom-testing (~> 1.0)
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
@@ -163,7 +178,7 @@ GEM
       less (~> 2.6.0)
       sprockets (> 2, < 4)
       tilt
-    libv8 (3.16.14.7)
+    libv8 (3.16.14.11)
     loofah (2.0.2)
       nokogiri (>= 1.5.9)
     mail (2.6.3)
@@ -172,21 +187,23 @@ GEM
       rails (>= 3.1)
     method_source (0.8.2)
     mime-types (2.6.1)
+    mimemagic (0.3.0)
     mini_portile (0.6.2)
     minitest (5.7.0)
-    multi_json (1.11.0)
+    multi_json (1.11.2)
     multipart-post (2.0.0)
     mysql2 (0.3.18)
-    net-ldap (0.5.1)
+    net-ldap (0.11)
     nokogiri (1.6.6.2)
       mini_portile (~> 0.6.0)
     orm_adapter (0.5.0)
-    paperclip (4.2.2)
-      activemodel (>= 3.0.0)
-      activesupport (>= 3.0.0)
-      cocaine (~> 0.5.3)
+    paperclip (4.3.0)
+      activemodel (>= 3.2.0)
+      activesupport (>= 3.2.0)
+      cocaine (~> 0.5.5)
       mime-types
-    parser (2.2.2.5)
+      mimemagic (= 0.3.0)
+    parser (2.2.2.6)
       ast (>= 1.1, < 3.0)
     powerpack (0.1.1)
     pry (0.10.1)
@@ -198,19 +215,19 @@ GEM
     pry-stack_explorer (0.4.9.2)
       binding_of_caller (>= 0.7)
       pry (>= 0.9.11)
-    rack (1.6.1)
+    rack (1.6.4)
     rack-test (0.6.3)
       rack (>= 1.0)
-    rails (4.2.1)
-      actionmailer (= 4.2.1)
-      actionpack (= 4.2.1)
-      actionview (= 4.2.1)
-      activejob (= 4.2.1)
-      activemodel (= 4.2.1)
-      activerecord (= 4.2.1)
-      activesupport (= 4.2.1)
+    rails (4.2.3)
+      actionmailer (= 4.2.3)
+      actionpack (= 4.2.3)
+      actionview (= 4.2.3)
+      activejob (= 4.2.3)
+      activemodel (= 4.2.3)
+      activerecord (= 4.2.3)
+      activesupport (= 4.2.3)
       bundler (>= 1.3.0, < 2.0)
-      railties (= 4.2.1)
+      railties (= 4.2.3)
       sprockets-rails
     rails-deprecated_sanitizer (1.0.3)
       activesupport (>= 4.2.0.alpha)
@@ -223,17 +240,17 @@ GEM
     rails-i18n (4.0.4)
       i18n (~> 0.6)
       railties (~> 4.0)
-    railties (4.2.1)
-      actionpack (= 4.2.1)
-      activesupport (= 4.2.1)
+    railties (4.2.3)
+      actionpack (= 4.2.3)
+      activesupport (= 4.2.3)
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     rainbow (2.0.0)
     rake (10.4.2)
-    ref (1.0.5)
+    ref (2.0.0)
     responders (2.1.0)
       railties (>= 4.2.0, < 5)
-    rubocop (0.32.0)
+    rubocop (0.32.1)
       astrolabe (~> 1.3)
       parser (>= 2.2.2.5, < 3.0)
       powerpack (~> 0.1)
@@ -250,16 +267,22 @@ GEM
       actionpack (~> 4.0)
       activemodel (~> 4.0)
     slop (3.6.0)
+    sort_alphabetical (1.0.1)
+      unicode_utils (>= 1.2.2)
     spring (1.3.6)
-    sprockets (2.12.3)
+    sprockets (2.12.4)
       hike (~> 1.2)
       multi_json (~> 1.0)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
-    sprockets-rails (2.3.1)
+    sprockets-rails (2.3.2)
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (>= 2.8, < 4.0)
+    th-bbcode (0.6.3)
+      actionpack
+      activesupport
+      i18n
     therubyracer (0.12.2)
       libv8 (~> 3.16.14.0)
       ref
@@ -276,6 +299,7 @@ GEM
     uglifier (2.7.1)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    unicode_utils (1.4.0)
     warden (1.2.3)
       rack (>= 1.0)
     wicked_pdf (0.11.0)
@@ -288,7 +312,10 @@ PLATFORMS
 DEPENDENCIES
   binding_of_caller
   cancan
+  cocoon
   coffee-rails (~> 4.0.0)
+  contacts!
+  country_select
   datagrid!
   datetimepicker-rails!
   devise
@@ -309,12 +336,13 @@ DEPENDENCIES
   pry
   pry-nav
   pry-stack_explorer
-  rails (= 4.2.1)
+  rails (= 4.2.3)
   rails-i18n
   rubocop
   sass-rails (~> 4.0.3)
   simple_form
   spring
+  th-bbcode
   therubyracer
   therubyrhino
   turbolinks

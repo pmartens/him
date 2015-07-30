@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.2.1'            # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+gem 'rails', '4.2.3'            # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'mysql2'                    # Use MySQl as the database for Active Record
 gem 'sass-rails', '~> 4.0.3'    # Use SCSS for stylesheets
 
@@ -31,9 +31,13 @@ gem 'wkhtmltopdf-binary'
 gem 'paperclip'
 gem 'gravtastic'
 gem "markitup-rails"
+gem 'th-bbcode'
+gem "cocoon"
+gem 'country_select'
 
 # mountable engines
 gem 'news', path: '../news'
+gem 'contacts', path: '../contacts'
 
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 group :development do

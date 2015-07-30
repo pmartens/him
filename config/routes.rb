@@ -5,9 +5,11 @@ Rails.application.routes.draw do
   root to: 'dashboard#index'
 
   mount News::Engine => "/news"
+  mount Contacts::Engine => "/contacts"
 
   resources :users
   resources :roles
+  resources :invoices
   resources :devices do
     resources :documents
     resources :network_interface_cards do

@@ -10,6 +10,8 @@
       <ul class="nav navbar-nav">
         <% if user_signed_in? %>
             <li><%= link_to "Users", main_app.users_path %></li>
+            <li><%= link_to "Contacts", main_app.contacts_path %></li>
+            <li><%= link_to "Invoices", main_app.invoices_path %></li>
             <li><%= link_to "Devices", main_app.devices_path if can? :manage, Device %></li>
             <li><%= link_to "Programs", main_app.programs_path if can? :manage, Program %></li>
             <li><%= link_to current_user.username, main_app.edit_user_registration_path %></li>

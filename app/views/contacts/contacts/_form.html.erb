@@ -1,0 +1,45 @@
+<%= simple_form_for @contact, :html => { :class => 'form-horizontal' } do |f| %>
+    <%= f.input :firstname %>
+    <%= f.input :lastname %>
+
+    <div id='company'>
+      <div id='company_from_list'>
+        <%= f.association :company, label_method: :name, value_method: :id, include_blank: true %>
+      </div>
+      <%= link_to_add_association 'add company', f, :company %>
+    </div>
+
+    <div id='phone'>
+        <%= f.simple_fields_for :phones do |phone| %>
+          <%= render 'phone_fields', f: phone %>
+        <% end %>
+        <%= link_to_add_association 'add phonenumber', f, :phones %>
+    </div>
+
+    <div id='email'>
+        <%= f.simple_fields_for :emails do |email| %>
+          <%= render 'email_fields', f: email %>
+        <% end %>
+        <%= link_to_add_association 'add email', f, :emails %>
+    </div>
+
+    <div id='address'>
+        <%= f.simple_fields_for :addresses do |address| %>
+          <%= render 'address_fields', f: address %>
+        <% end %>
+        <%= link_to_add_association 'add address', f, :addresses %>
+    </div>
+
+    <div id='homepage'>
+        <%= f.simple_fields_for :homepages do |homepage| %>
+          <%= render 'homepage_fields', f: homepage %>
+        <% end %>
+        <%= link_to_add_association 'add homepage', f, :homepages %>
+    </div>
+
+    <%= f.input :birthdate, :as => :date_picker %>
+    <%= f.input :note, as: :text %>
+    <%= f.association :user, as: :hidden, input_html: { value: current_user.id } %>
+    <%= f.button :submit, :class => 'btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")), contacts.contacts_path, :class => 'btn btn-default' %>
+<% end %>

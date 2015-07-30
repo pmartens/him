@@ -22,3 +22,4 @@
 //= require_tree .
 //= require markitup
 //= require markitup/sets/xbbcode/set
+//= require cocoon

@@ -1,0 +1,21 @@
+<%= simple_form_for @invoice, :html => { :class => 'form-horizontal' } do |f| %>
+  <div id='invoice_type'>
+    <div id='invoice_type_from_list'>
+      <%= f.association :invoice_type, label_method: :name, value_method: :id, prompt: "Choose a invoice Type", label: "Type" %>
+    </div>
+    <%= link_to_add_association 'new', f, :invoice_type %>
+  </div>
+  <%= f.association :contact, collection: Contacts::Contact.all, prompt: "Choose a Supplier", label: "Supplier" %>
+  <%= f.input :invoicenumber %>
+  <%= f.input :invoicedate, as: :date_picker %>
+  <%= f.input :state, collection: Invoice.states %>
+  <div id='documents'>
+    <%= f.simple_fields_for :documents do |document| %>
+      <%= render 'document_fields', f: document %>
+    <% end %>
+    <%= link_to_add_association 'add document', f, :documents %>
+  </div>
+  <%= f.association :user, as: :hidden, input_html: { value: current_user.id } %>
+  <%= f.button :submit, :class => 'btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")), programs_path, :class => 'btn btn-default' %>
+<% end %>

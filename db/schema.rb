@@ -11,7 +11,61 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150622191513) do
+ActiveRecord::Schema.define(version: 20150718110037) do
+
+  create_table "contacts_addresses", force: :cascade do |t|
+    t.string   "addresstype", limit: 255
+    t.string   "street",      limit: 255
+    t.string   "housenumber", limit: 255
+    t.string   "postalcode",  limit: 255
+    t.string   "city",        limit: 255
+    t.string   "country",     limit: 255
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.integer  "contact_id",  limit: 4
+  end
+
+  create_table "contacts_companies", force: :cascade do |t|
+    t.string   "name",            limit: 255
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.integer  "main_contact_id", limit: 4
+  end
+
+  create_table "contacts_contacts", force: :cascade do |t|
+    t.string   "firstname",  limit: 255
+    t.string   "lastname",   limit: 255
+    t.date     "birthdate"
+    t.text     "note",       limit: 65535
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.integer  "company_id", limit: 4
+    t.integer  "user_id",    limit: 4
+  end
+
+  create_table "contacts_emails", force: :cascade do |t|
+    t.string   "emailtype",  limit: 255
+    t.string   "email",      limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.integer  "contact_id", limit: 4
+  end
+
+  create_table "contacts_homepages", force: :cascade do |t|
+    t.string   "homepagetype", limit: 255
+    t.string   "url",          limit: 255
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.integer  "contact_id",   limit: 4
+  end
+
+  create_table "contacts_phones", force: :cascade do |t|
+    t.string   "phonetype",   limit: 255
+    t.string   "phonenumber", limit: 255
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.integer  "contact_id",  limit: 4
+  end
 
   create_table "cpus", force: :cascade do |t|
     t.string   "brand",            limit: 255
@@ -71,6 +125,25 @@ ActiveRecord::Schema.define(version: 20150622191513) do
     t.datetime "document_updated_at"
     t.integer  "device_id",             limit: 4
     t.string   "name",                  limit: 255
+    t.integer  "invoice_id",            limit: 4
+  end
+
+  create_table "invoice_types", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.integer  "user_id",    limit: 4
+  end
+
+  create_table "invoices", force: :cascade do |t|
+    t.string   "invoicenumber",   limit: 255
+    t.datetime "invoicedate"
+    t.string   "state",           limit: 255, default: ""
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
+    t.integer  "user_id",         limit: 4
+    t.integer  "contact_id",      limit: 4
+    t.integer  "invoice_type_id", limit: 4
   end
 
   create_table "manufacturers", force: :cascade do |t|
@@ -118,9 +191,9 @@ ActiveRecord::Schema.define(version: 20150622191513) do
     t.string   "mac",                       limit: 255
     t.string   "speed",                     limit: 255
     t.string   "duplex",                    limit: 255
-    t.boolean  "dhcp",                      limit: 1
+    t.boolean  "dhcp"
     t.integer  "vlan",                      limit: 4
-    t.boolean  "online",                    limit: 1
+    t.boolean  "online"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "network_interface_card_id", limit: 4
@@ -142,7 +215,7 @@ ActiveRecord::Schema.define(version: 20150622191513) do
     t.text     "properties",   limit: 65535
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "os",           limit: 1
+    t.boolean  "os"
   end
 
   create_table "roles", force: :cascade do |t|

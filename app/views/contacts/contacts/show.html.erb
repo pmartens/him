@@ -1,0 +1,45 @@
+<%- model_class = Contacts::Contact -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:firstname) %>:</strong></dt>
+  <dd><%= @contact.firstname %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:lastname) %>:</strong></dt>
+  <dd><%= @contact.lastname %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:company) %>:</strong></dt>
+  <dd><%= @contact.company.name unless @contact.company.nil? %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:emails) %>:</strong></dt>
+  <% @contact.emails.each do |email| %>
+    <dd><%= "#{email.emailtype} : #{email.email}" %></dd>
+  <% end %>
+  <dt><strong><%= model_class.human_attribute_name(:phones) %>:</strong></dt>
+  <% @contact.phones.each do |phone| %>
+    <dd><%= "#{phone.phonetype} : #{phone.phonenumber}" %> </dd>
+  <% end %>
+  <dt><strong><%= model_class.human_attribute_name(:addresses) %>:</strong></dt>
+  <% @contact.addresses.each do |address| %>
+    <dd><%= "#{address.street} #{address.housenumber}" %></dd>
+    <dd><%= "#{address.postalcode} #{address.city}" %></dd>
+    <dd><%= "#{address.country}" %></dd>
+  <% end %>
+  <dt><strong><%= model_class.human_attribute_name(:homepages) %>:</strong></dt>
+  <% @contact.homepages.each do |homepage| %>
+    <dd><%= "#{homepage.homepagetype} : " %><%= link_to homepage.url, target: "_blank" %> </dd>
+  <% end %>
+  <dt><strong><%= model_class.human_attribute_name(:note) %>:</strong></dt>
+  <dd><%= @contact.note %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:created_at) %>:</strong></dt>
+  <dd><%= @contact.created_at.strftime("%Y-%m-%d %H:%M") %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:updated_at) %>:</strong></dt>
+  <dd><%= @contact.updated_at.strftime("%Y-%m-%d %H:%M") %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:user) %>:</strong></dt>
+  <dd><%= link_to @contact.user.username, main_app.user_path(@contact.user) %></dd>
+</dl>
+
+<%= link_to t('.back', :default => t("helpers.links.back")), contacts_path, :class => 'btn btn-default'  %>
+<%= link_to t('.edit', :default => t("helpers.links.edit")), edit_contact_path(@contact), :class => 'btn btn-default' %>
+<%= link_to t('.destroy', :default => t("helpers.links.destroy")), contact_path(@contact), :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
