@@ -9,7 +9,10 @@ Rails.application.routes.draw do
 
   resources :users
   resources :roles
-  resources :invoices
+  resources :invoices do
+    resources :documents
+  end
+  resources :invoice_types
   resources :devices do
     resources :documents
     resources :network_interface_cards do

@@ -1,6 +1,6 @@
 class InvoicesController < ApplicationController
 
-  add_breadcrumb :index, :invoices_path
+  #add_breadcrumb :index, :invoices_path
 
   before_action :set_invoice, only: [:show, :edit, :update, :destroy]
 
@@ -43,10 +43,13 @@ class InvoicesController < ApplicationController
 
   def set_invoice
     @invoice = Invoice.find(params[:id])
-    add_breadcrumb @invoice.title
+    #add_breadcrumb @invoice.title
   end
 
   def invoice_params
-    params.require(:invoice).permit(:invoicenumber, :invoicedate, :state, :user_id, :contact_id, :created_at, :update_at)
+    params.require(:invoice).permit(:invoicenumber, :invoicedate, :state, :user_id, :supplier_id, :created_at, :update_at,
+    invoice_type_attributes:[:id, :_destroy],
+    documents_attributes:[:id, :name, :document,])
   end
+
 end

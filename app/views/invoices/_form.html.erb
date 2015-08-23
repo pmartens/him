@@ -5,7 +5,7 @@
     </div>
     <%= link_to_add_association 'new', f, :invoice_type %>
   </div>
-  <%= f.association :contact, collection: Contacts::Contact.all, prompt: "Choose a Supplier", label: "Supplier" %>
+  <%= f.association :supplier, collection: Contacts::Company.all, label_method: :name, value_method: :id, prompt: "Choose a Supplier", label: "Supplier" %>
   <%= f.input :invoicenumber %>
   <%= f.input :invoicedate, as: :date_picker %>
   <%= f.input :state, collection: Invoice.states %>
@@ -17,5 +17,5 @@
   </div>
   <%= f.association :user, as: :hidden, input_html: { value: current_user.id } %>
   <%= f.button :submit, :class => 'btn-primary' %>
-  <%= link_to t('.cancel', :default => t("helpers.links.cancel")), programs_path, :class => 'btn btn-default' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")), invoices_path, :class => 'btn btn-default' %>
 <% end %>

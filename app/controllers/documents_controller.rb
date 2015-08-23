@@ -1,25 +1,32 @@
 class DocumentsController < ApplicationController
 
-  add_breadcrumb :index_devices, :devices_path
-  add_breadcrumb :index, :device_documents_path
-
-  before_action :set_device
   before_action :set_document, only: [:show, :edit, :update, :destroy]
+  before_action :set_type
 
   respond_to :html
 
   def index
-    @documents = Document.where :device => @device
-    respond_with(@device, @documents)
+    if @type.present?
+      @documents = Document.where @type.keys.first => @type.values.first
+      respond_with(@type, @documents)
+    else
+      @documents = Document.all
+      respond_with(@documents)
+    end
   end
 
   def show
-    respond_with(@device, @document)
+    @type.present? ? respond_with(@type, @documents) : respond_with(@document)
   end
 
   def new
-    @document= Document.new :device => @device
-    respond_with(@device, @document)
+    if @type.present?
+      @document= Document.new @type.keys.first => @type.values.first
+      respond_with(@type, @documents)
+    else
+      @document= Document.new
+      espond_with(@document)
+    end
   end
 
   def edit
@@ -28,32 +35,39 @@ class DocumentsController < ApplicationController
   def create
     @document = Document.new document_params
     @document.save
-    respond_with(@device, @document)
+    @type.present? ? respond_with(@type, @documents) : respond_with(@document)
   end
 
   def update
     @document.update document_params
-    respond_with(@device, @document)
+    @type.present? ? respond_with(@type, @documents) : respond_with(@document)
   end
 
   def destroy
     @document.destroy
-    respond_with(@device, @document)
+    @type.present? ? respond_with(@type, @documents) : respond_with(@document)
   end
 
   private
 
-  def set_device
-    @device = Device.find(params[:device_id])
+  def respond
+    @type.present? ? respond_with(@type, @documents) : respond_with(@document)
+  end
+
+  def set_type
+    if params[:device_id].present?
+      @type = { device: Device.find(params[:device_id]) }
+    elsif params[:invoice_id]
+      @type = { invoice: Invoice.find(params[:invoice_id]) }
+    end
   end
 
   def set_document
     @document = Document.find(params[:id])
-    add_breadcrumb @document.name
   end
 
   def document_params
-    params.require(:document).permit(:name, :document, :device_id)
+    params.require(:document).permit(:name, :document, :device_id, :invoice_id)
   end
 
 end

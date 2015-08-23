@@ -6,7 +6,8 @@ class User < ActiveRecord::Base
 
   # Include default devise modules. Others available are:
   # :database_authenticatable, :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :ldap_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
+  #devise :ldap_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
+  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
 
   validates :username, presence: true, uniqueness: true
 
@@ -57,6 +58,13 @@ class User < ActiveRecord::Base
   # hack for remember_token
   def authenticatable_token
     Digest::SHA1.hexdigest(email)[0,29]
+  end
+
+  # ldap useers have no salt so we rescue BCrypt::Errors::InvalidHash
+  def valid_password?(password)
+    super
+  rescue BCrypt::Errors::InvalidHash => e
+    true
   end
 
 end

@@ -1,0 +1,30 @@
+<%- model_class = InvoiceType -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<%= link_to t('.new', :default => t("helpers.links.new")), new_invoice_type_path, :class => 'btn btn-primary' %>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:name) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%= model_class.human_attribute_name(:updated_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @invoice_types.each do |invoice_type| %>
+      <tr>
+        <td><%= invoice_type.name %></td>
+        <td><%= invoice_type.created_at.strftime("%Y-%m-%d %H:%M") %></td>
+        <td><%= invoice_type.updated_at.strftime("%Y-%m-%d %H:%M") %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")), edit_invoice_type_path(invoice_type), :class => 'btn btn-default btn-xs' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")), invoice_type_path(invoice_type), :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-xs btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

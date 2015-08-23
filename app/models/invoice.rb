@@ -1,11 +1,12 @@
 class Invoice < ActiveRecord::Base
 
   belongs_to :user
-  belongs_to :contact
+  belongs_to :supplier, class_name: 'Contacts::Company', foreign_key: "supplier_id"
   belongs_to :invoice_type
   has_many :documents
 
   accepts_nested_attributes_for :documents, reject_if: :all_blank, allow_destroy: true
+  accepts_nested_attributes_for :invoice_type, reject_if: :all_blank, allow_destroy: true
 
   # STATE	SENT AS	DESCRIPTION
   # Billed: A request for payment has been made, but a payment method has not been selected. Therefore, no payment address or spot rate has been assigned, and the expiration timer has not started.
@@ -32,7 +33,5 @@ class Invoice < ActiveRecord::Base
   def self.states
     STATES
   end
-
-
 
 end
