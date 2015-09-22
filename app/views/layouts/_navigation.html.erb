@@ -13,6 +13,7 @@
             <li><%= link_to "Contacts", main_app.contacts_path %></li>
             <li><%= link_to "Invoices", main_app.invoices_path %></li>
             <li><%= link_to "Devices", main_app.devices_path if can? :manage, Device %></li>
+            <li><%= link_to "Documents", main_app.documents_path %></li>
             <li><%= link_to "Programs", main_app.programs_path if can? :manage, Program %></li>
             <li><%= link_to current_user.username, main_app.edit_user_registration_path %></li>
             <li><%= link_to "Log out", main_app.destroy_user_session_path, :method => :delete %></li>

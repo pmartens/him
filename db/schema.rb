@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150730191941) do
+ActiveRecord::Schema.define(version: 20150823200909) do
 
   create_table "contacts_addresses", force: :cascade do |t|
     t.string   "addresstype", limit: 255
@@ -123,10 +123,19 @@ ActiveRecord::Schema.define(version: 20150730191941) do
     t.string   "document_content_type", limit: 255
     t.integer  "document_file_size",    limit: 4
     t.datetime "document_updated_at"
-    t.integer  "device_id",             limit: 4
     t.string   "name",                  limit: 255
-    t.integer  "invoice_id",            limit: 4
   end
+
+  create_table "attachments", force: :cascade do |t|
+    t.integer  "document_id",   limit: 4
+    t.integer  "attachmentable_id",   limit: 4
+    t.string   "attachmentable_type", limit: 255
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+  end
+
+  add_index "attachments", ["attachmentable_type", "attachmentable_id"], name: "index_documents_on_attachmentable_type_and_attachmentable_id", using: :btree
+  add_index "attachments", ["document_files_id"], name: "index_documents_on_document_files_id", using: :btree
 
   create_table "invoice_types", force: :cascade do |t|
     t.string   "name",       limit: 255

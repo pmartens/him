@@ -3,7 +3,8 @@ class Invoice < ActiveRecord::Base
   belongs_to :user
   belongs_to :supplier, class_name: 'Contacts::Company', foreign_key: "supplier_id"
   belongs_to :invoice_type
-  has_many :documents
+  has_many :attachments, as: :attachmentable
+  has_many :documents, through: :attachments
 
   accepts_nested_attributes_for :documents, reject_if: :all_blank, allow_destroy: true
   accepts_nested_attributes_for :invoice_type, reject_if: :all_blank, allow_destroy: true

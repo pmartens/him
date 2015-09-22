@@ -12,7 +12,10 @@ class Device < ActiveRecord::Base
   belongs_to :manufacturer
   belongs_to :device_type
   has_many :network_interface_cards
-  has_many :documents
+  has_many :attachments, as: :attachmentable
+  has_many :documents, through: :attachments
+
+  accepts_nested_attributes_for :documents, reject_if: :all_blank, allow_destroy: true
 
   validates :name, presence: true, uniqueness: true, length: { in: 3..30 }
   validates :device_type, presence: true

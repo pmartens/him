@@ -5,7 +5,7 @@
     </div>
     <%= link_to_add_association 'new', f, :invoice_type %>
   </div>
-  <%= f.association :supplier, collection: Contacts::Company.all, label_method: :name, value_method: :id, prompt: "Choose a Supplier", label: "Supplier" %>
+  <%= f.association :supplier, collection: Contacts::Company.all, label_method: :name, value_method: :id, prompt: "Choose a Supplier", label: "Supplier", required: true %>
   <%= f.input :invoicenumber %>
   <%= f.input :invoicedate, as: :date_picker %>
   <%= f.input :state, collection: Invoice.states %>

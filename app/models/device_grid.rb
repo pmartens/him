@@ -84,7 +84,7 @@ class DeviceGrid
     link_to "", device_network_interface_cards_path(model), :class => 'glyphicon glyphicon-hdd'
   end
   column(:documents, :header => "", :html => true) do |model|
-    link_to "", device_documents_path(model), :class => 'glyphicon glyphicon-file'
+    link_to "", device_attachments_path(model), :class => 'glyphicon glyphicon-file'
   end
   column(:edit, :header => "", :html => true) do |model|
     link_to "", edit_device_path(model), :class => 'glyphicon glyphicon-edit'

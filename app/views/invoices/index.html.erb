@@ -25,7 +25,7 @@
         <td><%= invoice.invoicenumber %></td>
         <td><%= invoice.invoicedate.strftime("%Y-%m-%d %H:%M") unless invoice.invoicedate.nil? %></td>
         <td><%= invoice.state %></td>
-        <td><%= link_to "", invoice_documents_path(invoice), :class => 'glyphicon glyphicon-file' %></td>
+        <td><%= link_to "", invoice_attachments_path(invoice), :class => 'glyphicon glyphicon-file' %></td>
         <td><%= link_to invoice.user.username, user_path(invoice.user) %></td>
         <td><%= invoice.created_at.strftime("%Y-%m-%d %H:%M") %></td>
         <td><%= invoice.updated_at.strftime("%Y-%m-%d %H:%M") %></td>

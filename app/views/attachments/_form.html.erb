@@ -1,0 +1,15 @@
+<%= simple_form_for([@attachmentable, @attachment], html: { :class => 'form-horizontal' }) do |f| %>
+
+  <%= f.input :attachmentable_id, as: :hidden, input_html: { value: @attachmentable.id } %>
+  <%= f.input :attachmentable_type, as: :hidden, input_html: { value: @attachmentable.class.name } %>
+
+  <div id='document'>
+    <div id='document_from_list'>
+      <%= f.association :document, label_method: :name, value_method: :id, prompt: "Choose a document", label: "Document" %>
+    </div>
+    <%= link_to_add_association 'new', f, :document %>
+  </div>
+
+  <%= f.button :submit, class: 'btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")), polymorphic_path([@attachmentable, @attachment]), :class => 'btn btn-default' %>
+<% end %>
