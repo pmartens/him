@@ -9,6 +9,8 @@ class Invoice < ActiveRecord::Base
   accepts_nested_attributes_for :documents, reject_if: :all_blank, allow_destroy: true
   accepts_nested_attributes_for :invoice_type, reject_if: :all_blank, allow_destroy: true
 
+  validates :invoicenumber, presence: true, uniqueness: true
+
   # STATE	SENT AS	DESCRIPTION
   # Billed: A request for payment has been made, but a payment method has not been selected. Therefore, no payment address or spot rate has been assigned, and the expiration timer has not started.
   # Unpaid:	A request for payment has been made, the payment method has been declared, and the expiration timer is ticking.

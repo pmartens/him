@@ -10,11 +10,11 @@ Rails.application.routes.draw do
   resources :users
   resources :roles
   resources :invoices do
-    resources :attachments
+    resources :attachments, path: '/documents'
   end
   resources :invoice_types
   resources :devices do
-    resources :attachments
+    resources :attachments, path: '/documents'
     resources :network_interface_cards do
       resources :network_interfaces
     end

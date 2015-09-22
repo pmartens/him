@@ -22,7 +22,7 @@ class InvoiceTypesController < ApplicationController
   def create
     @invoice_type = InvoiceType.new(invoice_type_params)
     @invoice_type.save
-    respond_with(@invoice_type)
+    redirect_to action: 'index'
   end
 
   def update

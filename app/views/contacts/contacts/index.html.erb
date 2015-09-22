@@ -6,35 +6,38 @@
 <table class="table table-striped">
   <thead>
     <tr>
+      <th></th>
       <th><%= model_class.human_attribute_name(:name) %></th>
       <th><%= model_class.human_attribute_name(:company) %></th>
       <th><%= model_class.human_attribute_name(:phones) %></th>
+      <th></th>
       <th><%= model_class.human_attribute_name(:emails) %></th>
+      <th></th>
       <th><%= model_class.human_attribute_name(:addresses) %></th>
+      <th></th>
       <th><%= model_class.human_attribute_name(:user) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
-      <th><%= model_class.human_attribute_name(:updated_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
   <tbody>
     <% @contacts.each do |contact| %>
       <tr>
-        <td><%= link_to "#{contact.lastname} #{contact.firstname}", contact_path(contact) %></td>
+        <td><%= link_to "", contact_path(contact), class: 'glyphicon glyphicon-search' %></td>
+        <td><%= "#{contact.lastname} #{contact.firstname}" %></td>
         <td><%= contact.company.name unless contact.company.nil? %></td>
-        <td><%= "#{contact.phones.first.phonenumber} (#{contact.phones.first.phonetype})" unless contact.phones.first.nil? %></td>
-        <td><%= "#{contact.emails.first.email} (#{contact.emails.first.emailtype})" unless contact.emails.first.nil? %></td>
+        <td><%= contact.phones.first.phonetype unless contact.phones.first.nil? %></td>
+        <td><%= contact.phones.first.phonenumber unless contact.phones.first.nil? %></td>
+        <td><%= contact.emails.first.emailtype unless contact.emails.first.nil? %></td>
+        <td><%= contact.emails.first.email unless contact.emails.first.nil? %></td>
+        <td><%= contact.addresses.first.addresstype unless contact.addresses.first.nil? %></td>
         <td>
-          <% if contact.emails.first.present? %>
-            <%= "(#{contact.addresses.first.addresstype})" %><br>
+          <% if contact.addresses.first.present? %>
             <%= "#{contact.addresses.first.street} #{contact.addresses.first.housenumber}" %><br>
             <%= "#{contact.addresses.first.postalcode} #{contact.addresses.first.city}" %><br>
             <%= "#{contact.addresses.first.country}" %>
           <% end %>
         </td>
         <td><%= link_to contact.user.username, main_app.user_path(contact.user) %></td>
-        <td><%= contact.created_at.strftime("%Y-%m-%d %H:%M") %></td>
-        <td><%= contact.updated_at.strftime("%Y-%m-%d %H:%M") %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")), edit_contact_path(contact), :class => 'btn btn-default btn-xs' %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")), contact_path(contact), :method => :delete,

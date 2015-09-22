@@ -1,39 +1,41 @@
 <%- model_class = Invoice -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+  <h1><%=t '.title', default: model_class.model_name.human.pluralize.titleize %></h1>
 </div>
-<%= link_to t('.new', :default => t("helpers.links.new")), new_invoice_path, :class => 'btn btn-primary' %>
+<%= link_to t('.new', default: t("helpers.links.new")), new_invoice_path, class: 'btn btn-primary' %>
 <%= link_to "Invoice Types", invoice_types_path, :class => 'btn btn-primary' %>
 <table class="table table-striped">
   <thead>
     <tr>
+      <th><%= model_class.human_attribute_name(:invoicenumber) %></th>
       <th><%= model_class.human_attribute_name(:supplier) %></th>
-      <th><%= model_class.human_attribute_name(:invocenumber) %></th>
       <th><%= model_class.human_attribute_name(:invoicedate) %></th>
+      <th><%= model_class.human_attribute_name(:invoicetype) %></th>
       <th><%= model_class.human_attribute_name(:state) %></th>
-      <th><%= model_class.human_attribute_name(:documents) %></th>
+      <th><%= model_class.human_attribute_name(:docs) %></th>
       <th><%= model_class.human_attribute_name(:user) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%= model_class.human_attribute_name(:updated_at) %></th>
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+      <th><%=t '.actions', default: t("helpers.actions") %></th>
     </tr>
   </thead>
   <tbody>
     <% @invoices.each do |invoice| %>
       <tr>
-        <td><%= link_to invoice.supplier.name, invoice_path(invoice) %></td>
-        <td><%= invoice.invoicenumber %></td>
-        <td><%= invoice.invoicedate.strftime("%Y-%m-%d %H:%M") unless invoice.invoicedate.nil? %></td>
+        <td><%= link_to invoice.invoicenumber, invoice_path(invoice) %></td>
+        <td><%= link_to invoice.supplier.name, contacts.contact_path(Contacts::Contact.by_supplier(invoice.supplier).first.id) %></td>
+        <td><%= invoice.invoicedate.strftime("%Y-%m-%d") unless invoice.invoicedate.nil? %></td>
+        <td><%= invoice.invoice_type.name unless invoice.invoice_type.nil? %></td>
         <td><%= invoice.state %></td>
-        <td><%= link_to "", invoice_attachments_path(invoice), :class => 'glyphicon glyphicon-file' %></td>
+        <td><%= link_to '', invoice_attachments_path(invoice), class: 'glyphicon glyphicon-file' %></td>
         <td><%= link_to invoice.user.username, user_path(invoice.user) %></td>
         <td><%= invoice.created_at.strftime("%Y-%m-%d %H:%M") %></td>
         <td><%= invoice.updated_at.strftime("%Y-%m-%d %H:%M") %></td>
         <td>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")), edit_invoice_path(invoice), :class => 'btn btn-default btn-xs' %>
-          <%= link_to t('.destroy', :default => t("helpers.links.destroy")), invoice_path(invoice), :method => :delete,
-                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                      :class => 'btn btn-xs btn-danger' %>
+          <%= link_to t('.edit', default: t("helpers.links.edit")), edit_invoice_path(invoice), class: 'btn btn-default btn-xs' %>
+          <%= link_to t('.destroy', default: t("helpers.links.destroy")), invoice_path(invoice), method: :delete,
+                      data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')) },
+                      class: 'btn btn-xs btn-danger' %>
         </td>
       </tr>
     <% end %>

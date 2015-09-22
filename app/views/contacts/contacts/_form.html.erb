@@ -2,12 +2,20 @@
     <%= f.input :firstname %>
     <%= f.input :lastname %>
 
+    <hr>
     <div id='company'>
-      <div id='company_from_list'>
-        <%= f.association :company, label_method: :name, value_method: :id, include_blank: true %>
-      </div>
-      <%= link_to_add_association 'add company', f, :company %>
+      <% if !@contact.company.nil? && @contact.company.main_contact_id == @contact.id %>
+        <%= f.simple_fields_for :company do |company| %>
+          <%= render 'company_fields', f: company %>
+        <% end %>
+      <% else %>
+        <div id='company_from_list'>
+          <%= f.association :company, label: 'Select Company', label_method: :name, value_method: :id, include_blank: true %>
+        </div>
+        <%= link_to_add_association 'add company', f, :company %>
+      <% end %>
     </div>
+    <hr>
 
     <div id='phone'>
         <%= f.simple_fields_for :phones do |phone| %>
