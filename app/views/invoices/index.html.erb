@@ -23,7 +23,7 @@
     <% @invoices.each do |invoice| %>
       <tr>
         <td><%= link_to invoice.invoicenumber, invoice_path(invoice) %></td>
-        <td><%= link_to invoice.supplier.name, contacts.contact_path(Contacts::Contact.by_supplier(invoice.supplier).first.id) %></td>
+        <td><%= link_to invoice.supplier.name, contacts.contact_path(Contacts::Contact.by_company(invoice.supplier).first.id) %></td>
         <td><%= invoice.invoicedate.strftime("%Y-%m-%d") unless invoice.invoicedate.nil? %></td>
         <td><%= invoice.invoice_type.name unless invoice.invoice_type.nil? %></td>
         <td><%= invoice.state %></td>

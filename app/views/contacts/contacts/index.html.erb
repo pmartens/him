@@ -28,7 +28,7 @@
         <td><%= contact.phones.first.phonetype unless contact.phones.first.nil? %></td>
         <td><%= contact.phones.first.phonenumber unless contact.phones.first.nil? %></td>
         <td><%= contact.emails.first.emailtype unless contact.emails.first.nil? %></td>
-        <td><%= contact.emails.first.email unless contact.emails.first.nil? %></td>
+        <td><%= link_to contact.emails.first.email, "mailto:#{contact.emails.first.email}"  unless contact.emails.first.nil? %></td>
         <td><%= contact.addresses.first.addresstype unless contact.addresses.first.nil? %></td>
         <td>
           <% if contact.addresses.first.present? %>
