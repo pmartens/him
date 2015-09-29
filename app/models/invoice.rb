@@ -1,4 +1,12 @@
 class Invoice < ActiveRecord::Base
+  include Searchable
+
+  settings index: { number_of_shards: 1 } do
+    mappings dynamic: 'false' do
+      indexes :invoicenumber, analyzer: 'pattern' #index_options: 'offsets'
+      indexes :state, analyzer: 'english'
+    end
+  end
 
   belongs_to :user
   belongs_to :supplier, class_name: 'Contacts::Company', foreign_key: "supplier_id"
@@ -37,4 +45,36 @@ class Invoice < ActiveRecord::Base
     STATES
   end
 
+  def self.search(query)
+    __elasticsearch__.search(
+      {
+        query: {
+          multi_match: {
+            query: query,
+            fields: ['invoicenumber^10', 'state']
+          }
+        },
+        highlight: {
+          pre_tags: ['<em>'],
+          post_tags: ['</em>'],
+          fields: {
+            invoicenumber: {},
+            state: {}
+          }
+        }
+      }
+    )
+  end
+
 end
+
+# Delete the previous invoices index in Elasticsearch
+Invoice.__elasticsearch__.client.indices.delete index: Invoice.index_name rescue nil
+
+# Create the new index with the new mapping
+Invoice.__elasticsearch__.client.indices.create \
+  index: Invoice.index_name,
+  body: { settings: Invoice.settings.to_hash, mappings: Invoice.mappings.to_hash }
+
+# Index all invoice records from the DB to Elasticsearch
+Invoice.import

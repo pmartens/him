@@ -14,16 +14,6 @@ GIT
       railties (>= 3.1)
 
 GIT
-  remote: git://github.com/elasticsearch/elasticsearch-rails.git
-  revision: ded20356920802c35d258756113acfd95b25ade6
-  specs:
-    elasticsearch-model (0.1.7)
-      activesupport (> 3)
-      elasticsearch (> 0.4)
-      hashie
-    elasticsearch-rails (0.1.7)
-
-GIT
   remote: git://github.com/seyhunak/twitter-bootstrap-rails.git
   revision: 935f53bb55ef736260fa2ef04e29da2fc3fb2b3f
   specs:
@@ -138,12 +128,17 @@ GEM
       responders
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
-    elasticsearch (1.0.12)
-      elasticsearch-api (= 1.0.12)
-      elasticsearch-transport (= 1.0.12)
-    elasticsearch-api (1.0.12)
+    elasticsearch (1.0.13)
+      elasticsearch-api (= 1.0.13)
+      elasticsearch-transport (= 1.0.13)
+    elasticsearch-api (1.0.13)
       multi_json
-    elasticsearch-transport (1.0.12)
+    elasticsearch-model (0.1.7)
+      activesupport (> 3)
+      elasticsearch (> 0.4)
+      hashie
+    elasticsearch-rails (0.1.7)
+    elasticsearch-transport (1.0.13)
       faraday
       multi_json
     erubis (2.7.0)
@@ -320,8 +315,8 @@ DEPENDENCIES
   datetimepicker-rails!
   devise
   devise_ldap_authenticatable!
-  elasticsearch-model!
-  elasticsearch-rails!
+  elasticsearch-model
+  elasticsearch-rails
   gravtastic
   jbuilder (~> 2.0)
   jquery-minicolors-rails

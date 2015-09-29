@@ -21,8 +21,8 @@ gem 'devise_ldap_authenticatable', :git => 'git://github.com/cschiewek/devise_ld
 gem 'cancan'
 gem 'rails-i18n'
 
-gem 'elasticsearch-model', git: 'git://github.com/elasticsearch/elasticsearch-rails.git'
-gem 'elasticsearch-rails', git: 'git://github.com/elasticsearch/elasticsearch-rails.git'
+gem 'elasticsearch-model'
+gem 'elasticsearch-rails'
 
 gem 'datagrid', git: 'git@github.com:bogdan/datagrid.git'
 gem 'kaminari'

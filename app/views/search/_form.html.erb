@@ -1,0 +1,7 @@
+<%= simple_form_for 'search', method: :get, html: { class: 'form-horizontal' } do |f| %>
+  <p>
+    <%= f.input :q, label: "Search for" %>
+    <%= f.input :models, as: :check_boxes,  collection: [:invoices, :devices] %>
+    <%= f.button :submit, "Search", :class => 'btn-primary' %>
+  </p>
+<% end %>
