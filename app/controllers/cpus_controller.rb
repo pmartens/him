@@ -1,6 +1,5 @@
 class CpusController < ApplicationController
 
-  add_breadcrumb :index_devices, :devices_path
   add_breadcrumb :index, :cpus_path
 
   before_action :set_cpu, only: [:show, :edit, :update, :destroy]

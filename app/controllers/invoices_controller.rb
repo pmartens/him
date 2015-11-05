@@ -1,13 +1,18 @@
 class InvoicesController < ApplicationController
 
-  #add_breadcrumb :index, :invoices_path
+  add_breadcrumb :index, :invoices_path
 
   before_action :set_invoice, only: [:show, :edit, :update, :destroy]
 
   respond_to :html
 
   def index
-    @invoices = Invoice.all
+    @search = InvoiceSearch.new(params[:invoice_search] || {})
+    @invoices = Kaminari.paginate_array(@search.search).page params[:page]
+    respond_with(@invoices, @search)
+  rescue Elasticsearch::Transport::Transport::Errors::BadRequest => e
+    @invoices = []
+    @error = e.message.match(/QueryParsingException\[([^;]+)\]/).try(:[], 1)
     respond_with(@invoices)
   end
 
@@ -24,13 +29,13 @@ class InvoicesController < ApplicationController
   end
 
   def create
-    @invoice = Invoice.new(invoice_params)
+    @invoice = Invoice.new invoice_params
     @invoice.save
     respond_with(@invoice)
   end
 
   def update
-    @invoice.update(invoice_params)
+    @invoice.update invoice_params
     respond_with(@invoice)
   end
 
@@ -42,8 +47,8 @@ class InvoicesController < ApplicationController
   private
 
   def set_invoice
-    @invoice = Invoice.find(params[:id])
-    #add_breadcrumb @invoice.title
+    @invoice = Invoice.find params[:id]
+    add_breadcrumb @invoice.invoicenumber
   end
 
   def invoice_params

@@ -1,0 +1,13 @@
+<div id="filters">
+    <%= simple_form_for @search, url: invoices_path, method: :get, html: { class: 'form-horizontal' } do |f| %>
+        <%= f.input :query %>
+        <hr>
+        <%= f.input :supplier_id, collection: Contacts::Company.all, label_method: :name, value_method: :id, label: "Supplier" %>
+        <%= f.input :user_id, collection: User.all, label_method: :full_name, value_method: :id, label: "User" %>
+        <%= f.input :state, collection: Invoice.states.map{ |k,v| v } %>
+        <%= f.input :invoice_start_date, as: :date_picker %>
+        <%= f.input :invoice_end_date, as: :date_picker %>
+        <%= f.button :submit, 'Search', class: 'btn-primary' %>
+        <hr>
+    <% end %>
+</div>

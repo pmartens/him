@@ -1,6 +1,6 @@
 class DocumentsController < ApplicationController
 
-  #add_breadcrumb :index, :documents_path
+  add_breadcrumb :index, :documents_path
 
   before_action :set_document, only: [:show, :edit, :update, :destroy]
 
@@ -43,7 +43,7 @@ class DocumentsController < ApplicationController
 
   def set_document
     @document = Document.find(params[:id])
-    #add_breadcrumb @document.title
+    add_breadcrumb @document.name
   end
 
   def document_params

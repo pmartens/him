@@ -40,4 +40,18 @@ Rails.application.configure do
   # Paperclip settings
   Paperclip.options[:command_path] = "/usr/local/bin/"
 
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+      address:              'smtp.gmail.com',
+      port:                 587,
+      domain:               'cg.nl',
+      user_name:            'pieter.en.mieke@gmail.com',
+      password:             'r&gul@r@1',
+      authentication:       'plain',
+      enable_starttls_auto: true  }
+
+  # Currently, Active Record suppresses errors raised within `after_rollback`/`after_commit` callbacks and only print
+  # them to the logs. In the next version, these errors will no longer be suppressed. Instead, the errors will propagate
+  # normally just like in other Active Record callbacks.
+  config.active_record.raise_in_transactional_callbacks = true
 end

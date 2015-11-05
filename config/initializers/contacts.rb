@@ -1,0 +1,1 @@
+Contacts.layout = "/layouts/application"

@@ -2,8 +2,11 @@
 <div class="page-header">
   <h1><%=t '.title', default: model_class.model_name.human.pluralize.titleize %></h1>
 </div>
-<%= link_to t('.new', default: t("helpers.links.new")), new_invoice_path, class: 'btn btn-primary' %>
-<%= link_to "Invoice Types", invoice_types_path, :class => 'btn btn-primary' %>
+
+<%= link_to t('.new', default: t('helpers.links.new')), new_invoice_path, class: 'btn btn-primary' %>
+<%= link_to 'Invoice Types', invoice_types_path, class: 'btn btn-primary' %>
+<%= link_to 'Search', '#', id: 'toggle-filters', class: 'btn btn-primary' %>
+<%= render :partial => 'search_form' %>
 <table class="table table-striped">
   <thead>
     <tr>
@@ -39,5 +42,6 @@
         </td>
       </tr>
     <% end %>
+    <%= paginate @invoices %>
   </tbody>
 </table>

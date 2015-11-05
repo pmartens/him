@@ -1,0 +1,14 @@
+Invoice: <%= @invoice.invoicenumber %>
+===============================================
+Supplier: <%= @invoice.supplier.name %>
+Invoice type: <%= @invoice.invoice_type.name unless @invoice.invoice_type.nil? %>
+Invoice state: <%= @invoice.state %>
+Registrant: <%= @invoice.user.username %>
+ 
+Dear Finance,
+
+I hereby send you the new invoice.
+
+Greetings,
+
+Creative Group - HIM system

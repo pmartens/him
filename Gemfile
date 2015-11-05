@@ -11,33 +11,35 @@ gem 'turbolinks'                # Build JSON APIs with ease. Read more: https://
 gem 'jbuilder', '~> 2.0'
 
 gem 'less-rails'
-gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
+gem 'twitter-bootstrap-rails', git: 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
 gem 'simple_form'
 gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', branch: 'master', submodules: true
 gem 'momentjs-rails', '>= 2.8.1',  github: 'derekprior/momentjs-rails'
 gem 'jquery-minicolors-rails'
 gem 'devise'
-gem 'devise_ldap_authenticatable', :git => 'git://github.com/cschiewek/devise_ldap_authenticatable.git'
+gem 'devise_ldap_authenticatable', git: 'git://github.com/cschiewek/devise_ldap_authenticatable.git'
 gem 'cancan'
 gem 'rails-i18n'
-
-gem 'elasticsearch-model'
-gem 'elasticsearch-rails'
-
+gem 'active_data', github: 'pyromaniac/active_data'
+gem 'elasticsearch'
+gem 'elasticsearch-extensions'
+gem 'chewy'
+gem 'kaminari'
 gem 'datagrid', git: 'git@github.com:bogdan/datagrid.git'
 gem 'kaminari'
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
 gem 'paperclip'
 gem 'gravtastic'
-gem "markitup-rails"
+gem 'markitup-rails'
 gem 'th-bbcode'
-gem "cocoon"
+gem 'cocoon'
 gem 'country_select'
+gem 'rubocop'
 
 # mountable engines
-gem 'news', path: '../news'
-gem 'contacts', path: '../contacts'
+gem 'news', git: 'git@github.com:pmartens/news.git' #path: '../news'
+gem 'contacts', git: 'git@github.com:pmartens/contacts.git' #path: '../contacts'
 
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 group :development do
@@ -46,7 +48,6 @@ group :development do
   gem 'pry'
   gem 'pry-stack_explorer'
   gem 'pry-nav'
-  gem 'rubocop'
 end
 
 group :production do

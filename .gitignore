@@ -19,3 +19,6 @@
 /config/ldap.yml
 /config/secrets.yml
 /config/database.yml
+
+# Rubymine settings
+.idea

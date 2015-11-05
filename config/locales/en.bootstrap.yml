@@ -4,7 +4,7 @@
 en:
   breadcrumbs:
     application:
-      root: "Index"
+      root: "Dashboard"
     pages:
       pages: "Pages"
     dashboard:
@@ -34,9 +34,19 @@ en:
       index_users: "Users"
       index: "Roles"
     users:
+      root: "Dashboard"
       index: "Users"
       registrations:
         index: "User settings"
+    invoices:
+      index: "Invoices"
+    invoice_types:
+      index_invoices: "Invoices"
+      index: "Invoice Types"
+    attachments:
+      index_invoices: "Invoices"
+      index_devices: "Devices"
+      index: "Documents"
   helpers:
     actions: "Actions"
     links:

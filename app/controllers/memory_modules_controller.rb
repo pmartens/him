@@ -1,6 +1,5 @@
 class MemoryModulesController < ApplicationController
 
-  add_breadcrumb :index_devices, :devices_path
   add_breadcrumb :index, :memory_modules_path
 
   before_action :set_memory_module, only: [:show, :edit, :update, :destroy]

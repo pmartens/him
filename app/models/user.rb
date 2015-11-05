@@ -2,14 +2,17 @@ class User < ActiveRecord::Base
 
   has_and_belongs_to_many :roles
   has_many :devices
+  has_many :invoices
   has_many :news_posts, class_name: 'News::Post', foreign_key: :user_id
 
   # Include default devise modules. Others available are:
   # :database_authenticatable, :confirmable, :lockable, :timeoutable and :omniauthable
-  #devise :ldap_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
-  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
+  devise :ldap_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
+  #devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
 
   validates :username, presence: true, uniqueness: true
+
+  update_index 'invoice#invoice', :invoices
 
   # Virtual attribute for authenticating by either username or email
   # This is in addition to a real persisted field like 'username'

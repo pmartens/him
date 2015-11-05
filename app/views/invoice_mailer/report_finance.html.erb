@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    </head>
+  <body>
+    <h1>Invoice: <%= @invoice.invoicenumber %></h1>
+    <p>
+        Supplier: <%= @invoice.supplier.name %><br>
+        Invoice type: <%= @invoice.invoice_type.name unless @invoice.invoice_type.nil? %><br>
+        Invoice state: <%= @invoice.state %><br>
+        Registrant: <%= @invoice.user.username %><br>
+    </p>
+
+    Dear Finance,
+    <p>
+    I hereby send you the new invoice.
+    </p>
+    <p>Greetings,</p>
+    <p>
+      <b>Creative Group - HIM system</b>
+    </p>
+  </body>
+</html>

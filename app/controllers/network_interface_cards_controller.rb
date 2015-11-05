@@ -1,6 +1,5 @@
 class NetworkInterfaceCardsController < ApplicationController
 
-  add_breadcrumb :index_devices, :devices_path
   add_breadcrumb :index, :device_network_interface_cards_path
 
   before_action :set_device

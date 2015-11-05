@@ -1,7 +1,9 @@
 Contacts::ContactsController.class_eval do
 
+  add_breadcrumb :index, :contacts_path
+
   private
-  
+
   def contact_params
     params.require(:contact).permit(:firstname, :lastname, :birthdate, :note, :created_at, :update_at, :supplier, :company_id, :user_id,
     company_attributes:[:id, :name, :_destroy],

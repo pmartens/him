@@ -23,6 +23,5 @@ Rails.application.routes.draw do
   resources :documents
   resources :cpus
   resources :memory_modules
-  get 'search', to: 'search#search'
 
 end

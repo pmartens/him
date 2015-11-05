@@ -1,6 +1,7 @@
 class InvoiceTypesController < ApplicationController
 
-  #add_breadcrumb :index, :invoice_types_path
+  add_breadcrumb :index_invoices, :invoices_path
+  add_breadcrumb :index, :invoice_types_path
 
   before_action :set_invoice_type, only: [:edit, :update, :destroy]
 
@@ -39,7 +40,7 @@ class InvoiceTypesController < ApplicationController
 
   def set_invoice_type
     @invoice_type = InvoiceType.find(params[:id])
-    #add_breadcrumb @invoice_type.name
+    add_breadcrumb @invoice_type.name
   end
 
   def invoice_type_params

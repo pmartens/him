@@ -1,12 +1,6 @@
 class Invoice < ActiveRecord::Base
-  include Searchable
 
-  settings index: { number_of_shards: 1 } do
-    mappings dynamic: 'false' do
-      indexes :invoicenumber, analyzer: 'pattern' #index_options: 'offsets'
-      indexes :state, analyzer: 'english'
-    end
-  end
+  after_save :report_finance
 
   belongs_to :user
   belongs_to :supplier, class_name: 'Contacts::Company', foreign_key: "supplier_id"
@@ -18,6 +12,8 @@ class Invoice < ActiveRecord::Base
   accepts_nested_attributes_for :invoice_type, reject_if: :all_blank, allow_destroy: true
 
   validates :invoicenumber, presence: true, uniqueness: true
+
+  update_index 'invoice#invoice', :self
 
   # STATE	SENT AS	DESCRIPTION
   # Billed: A request for payment has been made, but a payment method has not been selected. Therefore, no payment address or spot rate has been assigned, and the expiration timer has not started.
@@ -45,36 +41,13 @@ class Invoice < ActiveRecord::Base
     STATES
   end
 
-  def self.search(query)
-    __elasticsearch__.search(
-      {
-        query: {
-          multi_match: {
-            query: query,
-            fields: ['invoicenumber^10', 'state']
-          }
-        },
-        highlight: {
-          pre_tags: ['<em>'],
-          post_tags: ['</em>'],
-          fields: {
-            invoicenumber: {},
-            state: {}
-          }
-        }
-      }
-    )
+  private
+
+  def report_finance
+    if self..state_changed? && [ :paid, :unpaid, :refunded ].include?(self.state.downcase.to_sym)
+      InvoiceMailer.report_finance(self).deliver
+    end
   end
 
+
 end
-
-# Delete the previous invoices index in Elasticsearch
-Invoice.__elasticsearch__.client.indices.delete index: Invoice.index_name rescue nil
-
-# Create the new index with the new mapping
-Invoice.__elasticsearch__.client.indices.create \
-  index: Invoice.index_name,
-  body: { settings: Invoice.settings.to_hash, mappings: Invoice.mappings.to_hash }
-
-# Index all invoice records from the DB to Elasticsearch
-Invoice.import
