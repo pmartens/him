@@ -22,3 +22,5 @@
 
 # Rubymine settings
 .idea
+
+/public/system/documents/documents/
