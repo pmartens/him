@@ -13,13 +13,14 @@
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap
+//= require jquery.turbolinks
 //= require turbolinks
 //= require moment
 //= require bootstrap-datetimepicker
 //= require pickers
 //= require jquery.minicolors
 //= require jquery.minicolors.simple_form
-//= require_tree .
 //= require markitup
 //= require markitup/sets/xbbcode/set
 //= require cocoon
+//= require_tree .

@@ -1,6 +1,6 @@
 Contacts::ContactsController.class_eval do
 
-  add_breadcrumb :index, :contacts_path
+  #add_breadcrumb :index, :contacts_path
 
   private
 

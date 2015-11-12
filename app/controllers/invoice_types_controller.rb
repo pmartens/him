@@ -44,6 +44,6 @@ class InvoiceTypesController < ApplicationController
   end
 
   def invoice_type_params
-    params.require(:invoice_type).permit(:name, :created_at, :update_at)
+    params.require(:invoice_type).permit(:name, :user_id, :created_at, :update_at)
   end
 end

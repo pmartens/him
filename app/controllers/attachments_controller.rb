@@ -25,7 +25,7 @@ class AttachmentsController < ApplicationController
   def create
     @attachment = Attachment.new attachment_params
     @attachment.save
-    respond_with @attachment
+    respond_with @attachmentable, @attachment
   end
 
   def update
@@ -35,7 +35,7 @@ class AttachmentsController < ApplicationController
 
   def destroy
     @attachment.destroy
-    respond_with @attachment
+    respond_with @attachmentable, @attachment
   end
 
   private

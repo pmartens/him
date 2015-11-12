@@ -1,5 +1,7 @@
 class ProgramsController < ApplicationController
 
+  add_breadcrumb :index, :programs_path
+
   before_action :set_program, only: [:show, :edit, :update, :destroy]
 
   respond_to :html

@@ -5,5 +5,4 @@ class Document < ActiveRecord::Base
                                   :size => { :in => 0..2.megabytes }
   validates :name, presence: true
 
-  update_index 'invoice#invoice', :invoices
 end

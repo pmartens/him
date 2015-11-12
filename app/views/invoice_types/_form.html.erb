@@ -1,5 +1,6 @@
 <%= simple_form_for @invoice_type, :html => { :class => 'form-horizontal' } do |f| %>
   <%= f.input :name %>
+  <%= f.association :user, as: :hidden, input_html: { value: current_user.id } %>
   <%= f.button :submit, :class => 'btn-primary' %>
   <%= link_to t('.cancel', :default => t("helpers.links.cancel")), invoice_types_path, :class => 'btn btn-default' %>
 <% end %>

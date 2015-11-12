@@ -16,6 +16,7 @@ gem 'simple_form'
 gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', branch: 'master', submodules: true
 gem 'momentjs-rails', '>= 2.8.1',  github: 'derekprior/momentjs-rails'
 gem 'jquery-minicolors-rails'
+gem 'jquery-turbolinks'
 gem 'devise'
 gem 'devise_ldap_authenticatable', git: 'git://github.com/cschiewek/devise_ldap_authenticatable.git'
 gem 'cancan'
@@ -31,14 +32,15 @@ gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
 gem 'paperclip'
 gem 'gravtastic'
-gem 'markitup-rails'
-gem 'th-bbcode'
+gem 'markitup-rails', git: 'git@github.com:phlipper/markitup-rails.git'
+gem 'th-bbcode', '~> 0.4.0'
+gem 'will_scan_string', git: 'git@github.com:tobyhinloopen/will_scan_string.git'
 gem 'cocoon'
 gem 'country_select'
 gem 'rubocop'
 
 # mountable engines
-gem 'news', git: 'git@github.com:pmartens/news.git' #path: '../news'
+gem 'news', path: '../news' #git: 'git@github.com:pmartens/news.git' #path: '../news'
 gem 'contacts', git: 'git@github.com:pmartens/contacts.git' #path: '../contacts'
 
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring

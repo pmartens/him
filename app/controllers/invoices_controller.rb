@@ -8,7 +8,7 @@ class InvoicesController < ApplicationController
 
   def index
     @search = InvoiceSearch.new(params[:invoice_search] || {})
-    @invoices = Kaminari.paginate_array(@search.search).page params[:page]
+    @invoices = Kaminari.paginate_array(@search.search).page(params[:page])
     respond_with(@invoices, @search)
   rescue Elasticsearch::Transport::Transport::Errors::BadRequest => e
     @invoices = []

@@ -6,10 +6,10 @@
   <body>
     <h1>Invoice: <%= @invoice.invoicenumber %></h1>
     <p>
-        Supplier: <%= @invoice.supplier.name %><br>
+        Supplier: <%= @invoice.supplier.name unless @invoice.supplier.nil? %><br>
         Invoice type: <%= @invoice.invoice_type.name unless @invoice.invoice_type.nil? %><br>
         Invoice state: <%= @invoice.state %><br>
-        Registrant: <%= @invoice.user.username %><br>
+        Registrant: <%= @invoice.user.full_name%><br>
     </p>
 
     Dear Finance,

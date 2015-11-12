@@ -12,6 +12,7 @@ class Invoice < ActiveRecord::Base
   accepts_nested_attributes_for :invoice_type, reject_if: :all_blank, allow_destroy: true
 
   validates :invoicenumber, presence: true, uniqueness: true
+  validates :state, presence: true
 
   update_index 'invoice#invoice', :self
 

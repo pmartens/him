@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   root to: 'dashboard#index'
 
+  mount Markitup::Rails::Engine, at: "markitup", as: "markitup"
   mount News::Engine => "/news"
   mount Contacts::Engine => "/contacts"
 
@@ -23,5 +24,6 @@ Rails.application.routes.draw do
   resources :documents
   resources :cpus
   resources :memory_modules
+
 
 end

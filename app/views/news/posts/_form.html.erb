@@ -1,11 +1,5 @@
 <%= simple_form_for @post, :html => { :class => 'form-horizontal' } do |p| %>
     <%= p.input :title %>
-
-    <script type="text/javascript">
-      $("textarea").markItUp(mySettings);
-    </script>
-
-
     <%= p.input :comment, as: :text %>
     <%= p.association :user, as: :hidden, :input_html => { :value => current_user.id } %>
     <%= p.button :submit, :class => 'btn-primary' %>

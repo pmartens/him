@@ -3,7 +3,7 @@
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %> <%= @attachmentable.class.name %></h1>
 </div>
 <%= link_to t('.back', :default => t("helpers.links.back")), polymorphic_path(@attachmentable.class), :class => 'btn btn-default' %>
-<%= link_to t('.new', :default => t("helpers.links.new")), new_polymorphic_path(@attachmentable.class), :class => 'btn btn-primary' %>
+<%= link_to t('.new', :default => t("helpers.links.new")), new_polymorphic_url([@attachmentable, :attachment ]), :class => 'btn btn-primary' %>
 <table class="table table-striped">
   <thead>
     <tr>
